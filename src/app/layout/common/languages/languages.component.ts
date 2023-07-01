@@ -1,14 +1,19 @@
+import { NgFor, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { take } from 'rxjs';
-import { AvailableLangs, TranslocoService } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { FuseNavigationService, FuseVerticalNavigationComponent } from '@fuse/components/navigation';
+import { AvailableLangs, TranslocoService } from '@ngneat/transloco';
+import { take } from 'rxjs';
 
 @Component({
     selector       : 'languages',
     templateUrl    : './languages.component.html',
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs       : 'languages'
+    exportAs       : 'languages',
+    standalone     : true,
+    imports        : [MatButtonModule, MatMenuModule, NgTemplateOutlet, NgFor],
 })
 export class LanguagesComponent implements OnInit, OnDestroy
 {
@@ -22,7 +27,7 @@ export class LanguagesComponent implements OnInit, OnDestroy
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseNavigationService: FuseNavigationService,
-        private _translocoService: TranslocoService
+        private _translocoService: TranslocoService,
     )
     {
     }
@@ -40,8 +45,8 @@ export class LanguagesComponent implements OnInit, OnDestroy
         this.availableLangs = this._translocoService.getAvailableLangs();
 
         // Subscribe to language changes
-        this._translocoService.langChanges$.subscribe((activeLang) => {
-
+        this._translocoService.langChanges$.subscribe((activeLang) =>
+        {
             // Get the active lang
             this.activeLang = activeLang;
 
@@ -52,7 +57,7 @@ export class LanguagesComponent implements OnInit, OnDestroy
         // Set the country iso codes for languages for flags
         this.flagCodes = {
             'en': 'us',
-            'tr': 'tr'
+            'tr': 'tr',
         };
     }
 
@@ -125,8 +130,8 @@ export class LanguagesComponent implements OnInit, OnDestroy
         if ( projectDashboardItem )
         {
             this._translocoService.selectTranslate('Project').pipe(take(1))
-                .subscribe((translation) => {
-
+                .subscribe((translation) =>
+                {
                     // Set the title
                     projectDashboardItem.title = translation;
 
@@ -140,8 +145,8 @@ export class LanguagesComponent implements OnInit, OnDestroy
         if ( analyticsDashboardItem )
         {
             this._translocoService.selectTranslate('Analytics').pipe(take(1))
-                .subscribe((translation) => {
-
+                .subscribe((translation) =>
+                {
                     // Set the title
                     analyticsDashboardItem.title = translation;
 

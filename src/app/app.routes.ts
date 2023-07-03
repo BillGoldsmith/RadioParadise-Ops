@@ -30,4 +30,5 @@ export const appRoutes: Route[] = [
             {path: 'servers', loadChildren: () => import('rpapp/modules/servers/servers.routes')},
         ]
     }
+    ,{ path: '**', redirectTo: 'servers/bandwidth' }
 ];

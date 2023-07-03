@@ -4,6 +4,7 @@ import {UserService} from "../../../app/core/user/user.service";
 import {AccountModel, initialAccount} from "./account.model";
 import {catchError, forkJoin, lastValueFrom, Observable, of, switchMap} from "rxjs";
 import {environment} from "../../../zenvironments/environment";
+import {Router} from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class AccountService {
@@ -16,6 +17,7 @@ export class AccountService {
     constructor(
         private _httpClient: HttpClient,
         private _userService: UserService,
+        private _router: Router
     ) {
 
 
@@ -52,6 +54,7 @@ export class AccountService {
                         this._authenticated = true;
                         this._account = account;
 
+                        this._router.initialNavigation();
                         return of (true)
 
                     }

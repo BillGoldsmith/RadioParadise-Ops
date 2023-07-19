@@ -14,6 +14,7 @@ export const appRoutes: Route[] = [
     // Redirect empty path to '/example'
     {path: '', pathMatch : 'full', redirectTo: 'servers/bandwidth'},
     {path: 'auth', canActivate: [NoAuthGuard], canActivateChild: [NoAuthGuard],
+        component: LayoutComponent,
         data: {layout: 'empty'}, loadChildren: () => import('rpapp/modules/auth/auth.routes')},
 
 

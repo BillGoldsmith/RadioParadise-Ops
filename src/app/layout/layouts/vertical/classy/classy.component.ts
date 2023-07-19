@@ -19,6 +19,8 @@ import { SearchComponent } from 'app/layout/common/search/search.component';
 import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.component';
 import { UserComponent } from 'app/layout/common/user/user.component';
 import { Subject, takeUntil } from 'rxjs';
+import {AccountModel} from "../../../../../rpapp/core/account/account.model";
+import {AccountService} from "../../../../../rpapp/core/account/account.service";
 
 @Component({
     selector     : 'classy-layout',
@@ -31,7 +33,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
     isScreenSmall: boolean;
     navigation: Navigation;
-    user: User;
+    account: AccountModel;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -44,8 +46,10 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         private _userService: UserService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService,
+        private accountService: AccountService
     )
     {
+        this.account = this.accountService.getAccount();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -77,13 +81,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                 this.navigation = navigation;
             });
 
-        // Subscribe to the user service
-        this._userService.user$
-            .pipe((takeUntil(this._unsubscribeAll)))
-            .subscribe((user: User) =>
-            {
-                this.user = user;
-            });
+
 
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$

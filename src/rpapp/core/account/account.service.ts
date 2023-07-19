@@ -5,6 +5,7 @@ import {AccountModel, initialAccount} from "./account.model";
 import {catchError, forkJoin, lastValueFrom, Observable, of, switchMap} from "rxjs";
 import {environment} from "../../../zenvironments/environment";
 import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({providedIn: 'root'})
 export class AccountService {
@@ -17,7 +18,8 @@ export class AccountService {
     constructor(
         private _httpClient: HttpClient,
         private _userService: UserService,
-        private _router: Router
+        private _router: Router,
+        private _cookieService: CookieService
     ) {
 
 
@@ -81,5 +83,13 @@ export class AccountService {
         return this._account.level >= 4;
     }
 
+
+    signOut(){
+        sessionStorage.clear();
+        localStorage.clear();
+        this._cookieService.deleteAll('/', 'radioparadise.com');
+        window.location.reload();
+        //this._cookieService.delete("C_user_id","/",".radioparadsie.com",false,"None");
+    }
 }
 

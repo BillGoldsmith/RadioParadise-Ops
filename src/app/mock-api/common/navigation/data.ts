@@ -12,7 +12,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
     {
         id   : 'services',
         title: 'Services',
-        type : 'group',
+        type : 'aside',
         icon : 'heroicons_outline:circle-stack',
         children: [
             {
@@ -25,7 +25,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
             {
                 id   : 'playlists',
                 title: 'Playlists',
-                type : 'group',
+                type : 'collapsable',
                 icon : 'heroicons_outline:table-cells',
                 children: [
                     {
@@ -67,7 +67,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
     {
         id   : 'documentation',
         title: 'Documentation',
-        type : 'group',
+        type : 'aside',
         icon : 'heroicons_outline:book-open',
         children: [
             {

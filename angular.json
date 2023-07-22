@@ -81,6 +81,27 @@
                                 }
                             ]
                         },
+                        "testing": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "3mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "75kb",
+                                    "maximumError": "90kb"
+                                }
+                            ],
+                            "outputHashing": "all",
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/zenvironments/environment.ts",
+                                    "with": "src/zenvironments/environment.testing.ts"
+                                }
+                            ]
+                        },
                         "development": {
                             "buildOptimizer": false,
                             "optimization": false,

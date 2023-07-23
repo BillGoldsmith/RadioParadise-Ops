@@ -3,23 +3,36 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id   : 'bandwidth',
-        title: 'Bandwidth',
-        type : 'basic',
-        icon : 'heroicons_outline:server-stack',
-        link : '/example'
-    },
-    {
-        id   : 'services',
-        title: 'Services',
+        id   : 'monitor',
+        title: 'Monitoring',
         type : 'aside',
-        icon : 'heroicons_outline:circle-stack',
+        icon : 'heroicons_outline:chart-bar-square',
         children: [
             {
-                id   : 'radio-streams',
-                title: 'Radio Streams',
+                id   : 'bandwidth',
+                title: 'Bandwidth',
                 type : 'basic',
-                icon : 'heroicons_outline:musical-note',
+                link : '/example'
+            },
+            {
+                id   : 'stream-sync-status',
+                title: 'Stream Sync',
+                type : 'basic',
+                link : '/example'
+            }
+        ]
+    },
+    {
+        id   : 'tools',
+        title: 'Tools',
+        type : 'aside',
+        icon : 'heroicons_outline:wrench-screwdriver',
+        children: [
+            {
+                id   : 'cache-invalidation',
+                title: 'Cache Invalidation',
+                type : 'basic',
+                icon : 'heroicons_outline:arrow-path',
                 link : '/example'
             },
             {
@@ -47,13 +60,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         link : '/example'
                     }
                 ]
-            },
-            {
-                id   : 'cache-invalidation',
-                title: 'Cache Invalidation',
-                type : 'basic',
-                icon : 'heroicons_outline:arrow-path',
-                link : '/example'
             },
             {
                 id   : 'cover-art',
@@ -85,6 +91,20 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/example'
             }
         ]
+    },
+    {
+        id   : 'Songs',
+        title: 'Songs',
+        type : 'basic',
+        icon : 'heroicons_outline:musical-note',
+        link : '/example'
+    },
+    {
+        id   : 'ccounts',
+        title: 'Accounts',
+        type : 'basic',
+        icon : 'heroicons_outline:users',
+        link : '/example'
     },
 
 ];

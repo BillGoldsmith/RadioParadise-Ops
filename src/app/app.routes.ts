@@ -4,6 +4,7 @@ import {initialDataResolver} from 'app/app.resolvers';
 import {LayoutComponent} from 'app/layout/layout.component';
 import {NoAuthGuard} from "../rpapp/core/guards/noauth.guard";
 import {AdminGuard} from "../rpapp/core/guards/admin.guard";
+import {MonitorContainerComponent} from "../rpapp/containers/monitor-container/monitor-container.component";
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -12,7 +13,7 @@ export const appRoutes: Route[] = [
 
 
     // Redirect empty path to '/example'
-    {path: '', pathMatch : 'full', redirectTo: 'servers/bandwidth'},
+    {path: '', pathMatch : 'full', redirectTo: 'monitor/bandwidth'},
     {path: 'auth', canActivate: [NoAuthGuard], canActivateChild: [NoAuthGuard],
         component: LayoutComponent,
         data: {layout: 'empty'}, loadChildren: () => import('rpapp/modules/auth/auth.routes')},
@@ -28,8 +29,8 @@ export const appRoutes: Route[] = [
             initialData: initialDataResolver
         },
         children: [
-            {path: 'servers', loadChildren: () => import('rpapp/modules/servers/servers.routes')},
+            {path: 'monitor', component: MonitorContainerComponent, loadChildren: () => import('rpapp/modules/monitor/monitor.routes')},
         ]
     }
-    ,{ path: '**', redirectTo: 'servers/bandwidth' }
+    ,{ path: '**', redirectTo: 'monitor/bandwidth' }
 ];

@@ -4,7 +4,7 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 export const defaultNavigation: FuseNavigationItem[] = [
     {
         id   : 'monitor',
-        title: 'Monitoring',
+        title: 'Monitor',
         type : 'aside',
         icon : 'heroicons_outline:chart-bar-square',
         children: [
@@ -12,13 +12,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'bandwidth',
                 title: 'Bandwidth',
                 type : 'basic',
-                link : '/example'
+                link : '/monitor/bandwidth'
             },
             {
                 id   : 'stream-sync-status',
                 title: 'Stream Sync',
                 type : 'basic',
-                link : '/example'
+                link : '/monitor/stream-sync-status'
             }
         ]
     },
@@ -72,7 +72,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
     },
     {
         id   : 'documentation',
-        title: 'Documentation',
+        title: 'Docs',
         type : 'aside',
         icon : 'heroicons_outline:book-open',
         children: [

@@ -93,11 +93,30 @@ export const defaultNavigation: FuseNavigationItem[] = [
         ]
     },
     {
-        id   : 'Songs',
-        title: 'Songs',
-        type : 'basic',
+        id   : 'music',
+        title: 'music',
+        type : 'aside',
         icon : 'heroicons_outline:musical-note',
-        link : '/example'
+        children: [
+            {
+                id   : 'search',
+                title: 'Search',
+                type : 'basic',
+                link : '/example'
+            },
+            {
+                id   : 'reports',
+                title: 'Reports',
+                type : 'basic',
+                link : '/example'
+            },
+            {
+                id   : 'curate',
+                title: 'Curate',
+                type : 'basic',
+                link : '/example'
+            }
+        ]
     },
     {
         id   : 'ccounts',

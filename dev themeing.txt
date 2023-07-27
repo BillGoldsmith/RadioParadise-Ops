@@ -1,0 +1,24 @@
+--Themeing--
+
+resources.
+
+https://tailwindcss.com/docs/customizing-colors
+https://angular-material.fusetheme.com/docs/guides/customization/theme-layouts
+https://tailwindcss.com/docs/theme
+
+files:
+Main themeing  (  follow fuse theme guide,  override colors
+/src/tailwind.config.js
+
+Fuse material  ( override  light-base  and dark-base )
+/src/@fuse/styles/themes.scss
+
+Fuse tailwind  ( override  fuse customprops  )
+/src/@fuse/tailwind/plugins/theming.js
+
+
+
+
+
+
+

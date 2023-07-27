@@ -3,41 +3,42 @@
 @use "user-themes" as userThemes;
 
 /* Set the base colors for light themes */
+/* Set the base colors for light themes */
 $light-base: (
     foreground: (
         base: #000000,
-        divider: #E2E8F0, /* slate.200 */
-        dividers: #E2E8F0, /* slate.200 */
-        disabled: #94A3B8, /* slate.400 */
-        disabled-button: #94A3B8, /* slate.400 */
-        disabled-text: #94A3B8, /* slate.400 */
+        divider: #e5e5e5, /* slate.200 */
+        dividers: #e5e5e5, /* slate.200 */
+        disabled: #a8a29e, /* slate.400 */
+        disabled-button: #a8a29e, /* slate.400 */
+        disabled-text: #a8a29e, /* slate.400 */
         elevation: #000000,
-        hint-text: #94A3B8, /* slate.400 */
-        secondary-text: #64748B, /* slate.500 */
-        icon: #64748B, /* slate.500 */
-        icons: #64748B, /* slate.500 */
-        mat-icon: #64748B, /* slate.500 */
-        text: #1E293B, /* slate.800 */
-        slider-min: #1E293B, /* slate.800 */
-        slider-off: #CBD5E1, /* slate.300 */
-        slider-off-active: #94A3B8 /* slate.400 */
+        hint-text: #a8a29e, /* slate.400 */
+        secondary-text: #737373, /* slate.500 */
+        icon: #737373, /* slate.500 */
+        icons: #737373, /* slate.500 */
+        mat-icon: #737373, /* slate.500 */
+        text: #262626, /* slate.800 */
+        slider-min: #262626, /* slate.800 */
+        slider-off: #d4d4d4, /* slate.300 */
+        slider-off-active: #a3a3a3 /* slate.400 */
     ),
     background: (
-        status-bar: #CBD5E1, /* slate.300 */
+        status-bar: #d4d4d4, /* slate.300 */
         app-bar: #FFFFFF,
-        background: #F1F5F9, /* slate.100 */
-        hover: rgba(148, 163, 184, 0.12), /* slate.400 + opacity */
+        background: #f5f5f5, /* slate.100 */
+        hover: rgba(163, 163, 163, 0.12), /* slate.400 + opacity */
         card: #FFFFFF,
         dialog: #FFFFFF,
-        disabled-button: rgba(148, 163, 184, 0.38), /* slate.400 + opacity */
+        disabled-button: rgba(163, 163, 163, 0.38), /* slate.400 + opacity */
         raised-button: #FFFFFF,
-        focused-button: #64748B, /* slate.500 */
-        selected-button: #E2E8F0, /* slate.200 */
-        selected-disabled-button: #E2E8F0, /* slate.200 */
-        disabled-button-toggle: #CBD5E1, /* slate.300 */
-        unselected-chip: #E2E8F0, /* slate.200 */
-        disabled-list-option: #CBD5E1, /* slate.300 */
-        tooltip: #1E293B /* slate.800 */
+        focused-button: #737373, /* slate.500 */
+        selected-button: #e5e5e5, /* slate.200 */
+        selected-disabled-button: #e5e5e5, /* slate.200 */
+        disabled-button-toggle: #d4d4d4, /* slate.300 */
+        unselected-chip: #e5e5e5, /* slate.200 */
+        disabled-list-option: #d4d4d4, /* slate.300 */
+        tooltip: #262626 /* slate.800 */
     )
 );
 
@@ -45,38 +46,38 @@ $light-base: (
 $dark-base: (
     foreground: (
         base: #FFFFFF,
-        divider: rgba(241, 245, 249, 0.12), /* slate.100 + opacity */
-        dividers: rgba(241, 245, 249, 0.12), /* slate.100 + opacity */
-        disabled: #475569, /* slate.600 */
-        disabled-button: #1E293B, /* slate.800 */
-        disabled-text: #475569, /* slate.600 */
+        divider: rgba(245, 245, 245, 0.12), /* slate.100 + opacity */
+        dividers: rgba(245, 245, 245, 0.12), /* slate.100 + opacity */
+        disabled: #525252, /* slate.600 */
+        disabled-button: #262626, /* slate.800 */
+        disabled-text: #525252, /* slate.600 */
         elevation: #000000,
-        hint-text: #64748B, /* slate.500 */
-        secondary-text: #94A3B8, /* slate.400 */
-        icon: #F1F5F9, /* slate.100 */
-        icons: #F1F5F9, /* slate.100 */
-        mat-icon: #94A3B8, /* slate.400 */
+        hint-text: #737373, /* slate.500 */
+        secondary-text: #a3a3a3, /* slate.400 */
+        icon: #f5f5f5, /* slate.100 */
+        icons: #f5f5f5, /* slate.100 */
+        mat-icon: #a3a3a3, /* slate.400 */
         text: #FFFFFF,
         slider-min: #FFFFFF,
-        slider-off: #64748B, /* slate.500 */
-        slider-off-active: #94A3B8 /* slate.400 */
+        slider-off: #737373, /* slate.500 */
+        slider-off-active: #a3a3a3 /* slate.400 */
     ),
     background: (
-        status-bar: #0F172A, /* slate.900 */
-        app-bar: #0F172A, /* slate.900 */
-        background: #0F172A, /* slate.900 */
+        status-bar: #171717, /* slate.900 */
+        app-bar: #171717, /* slate.900 */
+        background: #171717, /* slate.900 */
         hover: rgba(255, 255, 255, 0.05),
-        card: #1E293B, /* slate.800 */
-        dialog: #1E293B, /* slate.800 */
-        disabled-button: rgba(15, 23, 42, 0.38), /* slate.900 + opacity */
-        raised-button: #0F172A, /* slate.900 */
-        focused-button: #E2E8F0, /* slate.200 */
+        card: #262626, /* slate.800 */
+        dialog: #262626, /* slate.800 */
+        disabled-button: rgba(23, 23, 23, 0.38), /* slate.900 + opacity */
+        raised-button: #171717, /* slate.900 */
+        focused-button: #e5e5e5, /* slate.200 */
         selected-button: rgba(255, 255, 255, 0.05),
-        selected-disabled-button: #1E293B, /* slate.800 */
-        disabled-button-toggle: #0F172A, /* slate.900 */
-        unselected-chip: #475569, /* slate.600 */
-        disabled-list-option: #E2E8F0, /* slate.200 */
-        tooltip: #64748B /* slate.500 */
+        selected-disabled-button: #262626, /* slate.800 */
+        disabled-button-toggle: #171717, /* slate.900 */
+        unselected-chip: #525252, /* slate.600 */
+        disabled-list-option: #e5e5e5, /* slate.200 */
+        tooltip: #737373 /* slate.500 */
     )
 );
 

@@ -2,3 +2,40 @@
 /*  @ Main Tailwind file for injecting utilities.
 /* ----------------------------------------------------------------------------------------------------- */
 @tailwind utilities;
+
+// space generation variables
+$spaceamounts: (0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40); // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right); // all positions
+
+@layer utilities {
+    @responsive {
+
+
+
+
+        @each $space in $spaceamounts {
+            @each $side in $sides {
+                .pm#{str-slice($side, 0, 1)}-#{$space} {
+                    margin-#{$side}: #{$space}px !important;
+                }
+
+                .pp#{str-slice($side, 0, 1)}-#{$space} {
+                    padding-#{$side}: #{$space}px !important;
+                }
+            }
+        }
+
+        @each $space in $spaceamounts {
+            .pm-#{$space} {
+                margin: #{$space}px !important;
+            }
+
+            .pp-#{$space} {
+                padding: #{$space}px !important;
+            }
+        }
+
+
+
+    }
+}

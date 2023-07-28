@@ -1,0 +1,44 @@
+<div>
+
+
+    <form>
+        <div class="pmt-8">
+            <mat-form-field class="w-1/2">
+                <mat-label>Host</mat-label>
+                <mat-select [(value)]="form_host">
+                    <mat-option [value]="'img.radioparadise.com'">img.radioparadise.com</mat-option>
+                    <mat-option [value]="'radioparadise.com'">radioparadise.com</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="pmt-8 flex">
+            <mat-form-field class="w-full">
+                <mat-label>Path</mat-label>
+                <input matInput placeholder="/folder/file.txt" [ngModelOptions]="{standalone: true}"
+                       [(ngModel)]="form_url">
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div>
+        <div class="pmt-20">
+            <button (click)="submitForm()" color="primary" mat-raised-button [disabled]="loading">
+                Invalidate
+            </button>
+            <button class="pml-12" (click)="resetForm()" mat-button color="primary">
+                Reset Form
+            </button>
+        </div>
+
+    </div>
+
+    <p class="pmt-40">
+        To invalidate a file. Select the host and enter the path info. eg. "/folder/file.txt"
+    </p>
+    <p class="pmt-12">
+        To invalidate by prefix. Add an asterix to the end of the path. eg. "/folder/*"
+    </p>
+
+
+</div>

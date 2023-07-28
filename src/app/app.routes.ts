@@ -30,6 +30,7 @@ export const appRoutes: Route[] = [
         },
         children: [
             {path: 'monitor', component: MonitorContainerComponent, loadChildren: () => import('rpapp/modules/monitor/monitor.routes')},
+            {path: 'toolbox', component: MonitorContainerComponent, loadChildren: () => import('rpapp/modules/toolbox/toolbox.routes')},
         ]
     }
     ,{ path: '**', redirectTo: 'monitor/bandwidth' }

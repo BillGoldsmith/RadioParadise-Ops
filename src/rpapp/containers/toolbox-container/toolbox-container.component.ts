@@ -3,13 +3,13 @@ import {ActivatedRoute, RouterOutlet} from "@angular/router";
 import {FuseScrollResetDirective} from "../../../@fuse/directives/scroll-reset";
 
 @Component({
-    selector: 'app-monitor-container',
-    templateUrl: './monitor-container.component.html',
-    styleUrls: ['./monitor-container.component.scss'],
+    selector: 'app-toolbox-container',
+    templateUrl: './toolbox-container.component.html',
+    styleUrls: ['./toolbox-container.component.scss'],
     standalone: true,
     imports: [RouterOutlet, FuseScrollResetDirective],
 })
-export class MonitorContainerComponent {
+export class ToolboxContainerComponent {
 
     title = '';
 

@@ -11,7 +11,8 @@ const generatePalette = require(path.resolve(__dirname, ('src/@fuse/tailwind/uti
  */
 const customPalettes = {
     brand: generatePalette('#2196F3'),
-    customPrimary: generatePalette('feb246')
+    customPrimary: generatePalette('2795cc'),
+    customAccent: generatePalette('feb246')
 };
 
 /**
@@ -21,10 +22,7 @@ const themes = {
     // Default theme is required for theming system to work correctly!
     'default': {
         primary  : customPalettes.customPrimary,
-        accent   : {
-            ...colors.neutral,
-            DEFAULT: colors.neutral[800]
-        },
+        accent  : customPalettes.customAccent,
         warn     : {
             ...colors.red,
             DEFAULT: colors.red[600]

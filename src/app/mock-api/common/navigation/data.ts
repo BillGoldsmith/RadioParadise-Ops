@@ -23,8 +23,8 @@ export const defaultNavigation: FuseNavigationItem[] = [
         ]
     },
     {
-        id   : 'tools',
-        title: 'Tools',
+        id   : 'toolbox',
+        title: 'Toolbox',
         type : 'aside',
         icon : 'heroicons_outline:wrench-screwdriver',
         children: [
@@ -33,7 +33,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Cache Invalidation',
                 type : 'basic',
                 icon : 'heroicons_outline:arrow-path',
-                link : '/example'
+                link : '/toolbox/cache-invalidation'
             },
             {
                 id   : 'playlists',

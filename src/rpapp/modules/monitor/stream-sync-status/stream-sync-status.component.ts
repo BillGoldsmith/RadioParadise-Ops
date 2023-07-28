@@ -23,7 +23,7 @@ export class StreamSyncStatusComponent implements OnInit{
     loadData(){
 
         this.http.get( environment.RPSERVER_API + 'stream_sync_status', {withCredentials:true, responseType: 'text' }).subscribe( (data) =>{
-            console.log('loaddata', data);
+            //console.log('loaddata', data);
             this.pageData = data;
         })
 

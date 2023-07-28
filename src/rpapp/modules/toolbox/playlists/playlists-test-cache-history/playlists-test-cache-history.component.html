@@ -1,0 +1,34 @@
+<div>
+
+    <button class="pmb-20" mat-raised-button color="primary" (click)="clickRunTests()" [disabled]="busy">Start Test</button>
+
+    <div>
+        <div *ngFor="let channel of channelTest | keyvalue : valueOrder" class="pmt-8">
+            Channel-{{channel.value.chan}}
+
+
+            <div *ngFor="let bitrate  of channel.value.bitrates | keyvalue : valueOrder" class="pml-8">
+                bitrate: {{ bitrate.value.label }}
+                <span class="pml-8">( files: {{bitrate.value.fileCount}} )</span>
+                <span class="pml-12"> tested ... {{ bitrate.value.tested }} </span>
+                <span class="pml-12"> errors ... {{ bitrate.value.errorCount }} </span>
+                <span class="pml-8">( start event: {{bitrate.value.startEvent}} )</span>
+                <span class="pml-8">( end event: {{bitrate.value.endEvent}} )</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pmt-8">404's
+        <div *ngFor="let channel of channelTest | keyvalue : valueOrder">
+            <div *ngFor="let bitrate  of channel.value.bitrates | keyvalue : valueOrder">
+                <div *ngFor="let error of bitrate.value.errors" class="pml-12">
+                    <a target="_blank" href="{{error}}">  {{ error }} </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

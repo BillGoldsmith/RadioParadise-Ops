@@ -45,28 +45,28 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         id   : 'test-live',
                         title: 'Test live',
                         type : 'basic',
-                        link : '/example'
+                        link : '/toolbox/playlists/test-live'
                     },
                     {
                         id   : 'test-cache-history',
                         title: 'Test cache history',
                         type : 'basic',
-                        link : '/example'
+                        link : '/toolbox/playlists/test-cache-history'
                     },
                     {
                         id   : 'test-promos',
                         title: 'Test scheduled promos',
                         type : 'basic',
-                        link : '/example'
+                        link : '/toolbox/playlists/test-scheduled-promos'
                     }
                 ]
             },
             {
                 id   : 'cover-art',
-                title: 'Cover Art',
+                title: 'Test Cover Art',
                 type : 'basic',
                 icon : 'heroicons_outline:square-2-stack',
-                link : '/example'
+                link : '/toolbox/test-cover-art'
             }
         ]
     },

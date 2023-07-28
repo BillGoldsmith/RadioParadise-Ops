@@ -1,0 +1,20 @@
+<div>
+
+    <button class="pmb-20" mat-raised-button color="primary" (click)="clickRunTests()" [disabled]="busy">Start Test</button>
+
+    <div >
+        Tested: {{testedCount / 3 | number: '1.0-0' }}
+    </div>
+    <div class="pmb-12">
+        Errors: {{errors.size}}
+    </div>
+
+
+    <div *ngFor="let item of errors | keyvalue">
+
+        <a class="pmr-12"  target="_blank" [href]="'/admin/brainz/view-album/' + item.key" >Missing</a> <b>{{item.key}}</b>  {{ 'S:' + item.value.s }} {{ 'M:' + item.value.m }} {{ 'L:' + item.value.l }}
+        <span class="pml-12">{{ item.value.asin }}</span> <span class="ml-12">{{ item.value.mbid_release_group }}</span>
+
+    </div>
+
+</div>

@@ -5,8 +5,8 @@
 
 const partials = {
 
-  //API_SERVER: 'http://localdev.radioparadise.com:86/',
-  API_SERVER: 'http://api2.radioparadise.com/',
+  API_SERVER: 'http://localdev.radioparadise.com:86/',
+  //API_SERVER: 'http://api2.radioparadise.com/',
 
   IMAGE_SERVER: 'https://img.radioparadise.com/',
 

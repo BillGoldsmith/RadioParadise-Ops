@@ -5,6 +5,9 @@ import {LayoutComponent} from 'app/layout/layout.component';
 import {NoAuthGuard} from "../rpapp/core/guards/noauth.guard";
 import {AdminGuard} from "../rpapp/core/guards/admin.guard";
 import {MonitorContainerComponent} from "../rpapp/containers/monitor-container/monitor-container.component";
+import {ToolboxContainerComponent} from "../rpapp/containers/toolbox-container/toolbox-container.component";
+import {DocsContainerComponent} from "../rpapp/containers/docs-container/docs-container.component";
+import {AccountsContainerComponent} from "../rpapp/containers/accounts-container/accounts-container.component";
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -30,7 +33,9 @@ export const appRoutes: Route[] = [
         },
         children: [
             {path: 'monitor', component: MonitorContainerComponent, loadChildren: () => import('rpapp/modules/monitor/monitor.routes')},
-            {path: 'toolbox', component: MonitorContainerComponent, loadChildren: () => import('rpapp/modules/toolbox/toolbox.routes')},
+            {path: 'toolbox', component: ToolboxContainerComponent, loadChildren: () => import('rpapp/modules/toolbox/toolbox.routes')},
+            {path: 'docs', component: DocsContainerComponent, loadChildren: () => import('rpapp/modules/docs/docs.routes')},
+            {path: 'accounts', component: AccountsContainerComponent, loadChildren: () => import('rpapp/modules/accounts/accounts.routes')},
         ]
     }
     ,{ path: '**', redirectTo: 'monitor/bandwidth' }

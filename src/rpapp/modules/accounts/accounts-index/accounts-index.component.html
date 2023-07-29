@@ -1,0 +1,127 @@
+<div class="w-full" >
+
+
+        <form name="searchForm" novalidate (ngSubmit)="clickSearch()">
+
+            <div class="w-full" >
+
+                <div >
+                    <mat-form-field class=" w-full max-w-md ">
+                        <input matInput placeholder="search" [ngModelOptions]="{standalone: true}" [(ngModel)]="search_text">
+                    </mat-form-field>
+                </div>
+
+                <div class="search-button">
+                    <button type="submit" color="primary" mat-raised-button>search</button>
+                </div>
+
+
+
+            </div>
+
+        </form>
+
+        <p *ngIf="search404"  class="ppt-20">
+            No matching account found.
+        </p>
+
+
+        <div *ngIf="data" >
+            <div class="prose">
+            <table class="pmt-20" >
+                <tr>
+                    <td class="font-medium ">username</td>
+                    <td class="font-light">{{data.username}}</td>
+                </tr>
+                <tr>
+                    <td class="font-medium">user id</td>
+                    <td class="font-light"><a  target="_blank" [href]="'https://radioparadise.com/account/profile/' + data.user_id">{{data.user_id}}</a></td>
+                </tr>
+                <tr>
+                    <td class="font-medium">email</td>
+                    <td class="font-light">{{data.email}}</td>
+                </tr>
+                <tr>
+                    <td class="font-medium">country</td>
+                    <td class="font-light"> {{data.country}}</td>
+                </tr>
+                <tr class="spacer"></tr>
+                <tr>
+                    <td class="font-medium">joined</td>
+                    <td class="font-light"> {{data.join_date * 1000 | date}}</td>
+                </tr>
+                <tr>
+                    <td class="font-medium">last login</td>
+                    <td class="font-light">{{data.last_login * 1000 | date}}</td>
+                </tr>
+                <tr class="spacer"></tr>
+                <tr>
+                    <td class="font-medium">level</td>
+                    <td class="font-light"> {{data.level}}</td>
+                </tr>
+                <tr>
+                    <td class="font-medium">locked</td>
+                    <td class="font-light"> {{data.locked === 't' ? 'true': 'false'}}</td>
+                </tr>
+                <tr>
+                    <td class="font-medium">newsletter</td>
+                    <td class="font-light"> {{data.newsletter === '1' ? 'subscribed': 'false'}}</td>
+                </tr>
+            </table>
+            </div>
+
+            <div class="pmt-12  flex-wrap w-full"  >
+
+                <button mat-raised-button class="mat-green-button m-1" (click)="clickToggleNewsletter()" >
+                    newsletter
+                </button>
+
+                <button mat-raised-button class="mat-orange-button m-1" (click)="clickActivate()" *ngIf="data.level < 3 && data.email !== ''">
+                    activate
+                </button>
+
+                <button mat-raised-button class="mat-orange-button m-1" (click)="clickChangePassword()" *ngIf="data.level > 1">
+                    password
+                </button>
+
+                <button mat-raised-button class="mat-orange-button m-1" (click)="clickChangeLevel()" *ngIf="data.level >= 3">
+                    level
+                </button>
+
+                <button mat-raised-button class="mat-orange-button m-1" (click)="clickToggleLocked()">
+                    {{ data.locked === 't' ? 'unlock': 'lock' }}
+                </button>
+
+                <button mat-raised-button class="mat-orange-button m-1" (click)="clickChangeUsername()">
+                    username
+                </button>
+
+                <button mat-raised-button class="mat-orange-button m-1" (click)="clickChangeEmail()">
+                    email
+                </button>
+
+                <button mat-raised-button color="warn" class="m-1" (click)="clickDelete()">
+                    delete
+                </button>
+
+
+            </div>
+
+            <div class="prose">
+                <div class="pmt-20">ratings count:</div>
+                <table *ngIf="favsData" class="max-w-40 pmt-12">
+                    <tr><td>5+ </td><td>({{favsData.favsCount.r5}})</td></tr>
+                    <tr><td>6+</td><td>({{favsData.favsCount.r6}})</td></tr>
+                    <tr><td>7+</td><td>({{favsData.favsCount.r7}})</td></tr>
+                    <tr><td>8+</td><td>({{favsData.favsCount.r8}})</td></tr>
+                    <tr><td>9+</td><td>({{favsData.favsCount.r9}})</td></tr>
+                    <tr><td>10</td><td>({{favsData.favsCount.r10}})</td></tr>
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+</div>

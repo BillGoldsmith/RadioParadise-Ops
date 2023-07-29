@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Delete account</h2>
+<mat-dialog-content>
+  <p>Account is anonymized and disabled if there are any comments or posts.</p>
+  <mat-slide-toggle  [(ngModel)]="purgeChecked" color="warn">Purge</mat-slide-toggle>
+  <p> ( enable purge to delete account/comments/posts )</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+  <button mat-button color="warn" [mat-dialog-close]="purgeChecked ? 'delete-purge' : 'delete'">Yes, delete.</button>
+</mat-dialog-actions>

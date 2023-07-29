@@ -2,3 +2,13 @@
 /*  @ Import/write your custom styles here.
 /*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
 /* ----------------------------------------------------------------------------------------------------- */
+
+.mat-mdc-raised-button.mat-green-button {
+    background-color: #3ccd3c !important;
+    color: black !important;
+}
+
+.mat-mdc-raised-button.mat-orange-button {
+    background-color: #feb246 !important;
+    color: black !important;
+}

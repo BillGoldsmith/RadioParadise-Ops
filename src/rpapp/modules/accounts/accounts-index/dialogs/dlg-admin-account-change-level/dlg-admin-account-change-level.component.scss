@@ -1,0 +1,26 @@
+
+div.levels {
+
+  button {
+    margin: 8px;
+
+    width: 150px;
+
+    &.warning-button {
+      background-color: #ffc107;
+      color: black;
+    }
+
+    &.danger-button {
+      background-color: #dc3545;
+      color: black;
+    }
+
+    &.safe-button {
+      background-color: #28a745;
+      color: black;
+    }
+
+  }
+
+}

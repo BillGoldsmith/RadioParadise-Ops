@@ -1,0 +1,56 @@
+<div class="content prose">
+
+
+
+        <h3>
+            Strapi Filter And Sort
+        </h3>
+
+        <div>
+            <div>
+                <a target="_strapi" href="https://strapi.radioparadise.com/admin/content-manager/collectionType/api::blog.blog?page=1&pageSize=100&sort=position:ASC,date:DESC&filters[$and][0][$or][0][blog_type][name][$null]=true&filters[$and][0][$or][1][blog_type][name][$eq]=default&filters">Home And Blog Page</a>
+            </div>
+            <div>
+                <a target="_strapi" href="https://strapi.radioparadise.com/admin/content-manager/collectionType/api::blog.blog?page=1&pageSize=100&sort=position:ASC,date:DESC&filters[$and][0][$or][0][blog_type][name][$null]=true&filters[$and][0][$or][1][blog_type][name][$eq]=default&filters[$and][0][$or][2][blog_type][name][$eq]=blog_only">Blog Page Only</a>
+            </div>
+            <div>
+                <a target="_strapi" href="https://strapi.radioparadise.com/admin/content-manager/collectionType/api::blog.blog?page=1&pageSize=100&sort=position:ASC,date:DESC&filters[$and][0][$or][0][blog_type][name][$null]=true&filters[$and][0][$or][1][blog_type][name][$eq]=default&filters[$and][0][$or][2][blog_type][name][$eq]=home_only">Home Page Only</a>
+            </div>
+
+            <div>
+                <a target="_strapi" href="https://strapi.radioparadise.com/admin/content-manager/collectionType/api::episode.episode?page=1&pageSize=100&sort=position:ASC,date:DESC">Episodes</a>
+            </div>
+
+        </div>
+
+        <h3>
+            Preview on testing <br><span class="text-small">( bypass cache and view unpublished entries, unpublished items only visible to creators/admins )</span>
+        </h3>
+
+        <div >
+            <div>
+                <a href="https://testing.radioparadise.com/home" target="_preview">testing.radioparadise.com/home</a>
+            </div>
+            <div>
+                <a href="https://testing.radioparadise.com/blog" target="_preview">testing.radioparadise.com/blog</a>
+            </div>
+            <div>
+                <a href="https://testing.radioparadise.com/radio-2050" target="_preview">testing.radioparadise.com/radio-2050</a>
+            </div>
+        </div>
+
+        <h3>
+            Blog Layouts
+        </h3>
+
+        <div>
+            <ul>
+                <li>DEFAULT  shows banner image and author/date below it.</li>
+                <li>BASIC doesn't inject anything into the page content.</li>
+            </ul>
+
+        </div>
+
+
+
+</div>

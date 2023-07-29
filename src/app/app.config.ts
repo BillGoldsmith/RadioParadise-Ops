@@ -17,12 +17,17 @@ import {provideTransloco} from 'app/core/transloco/transloco.provider';
 import {mockApiServices} from 'app/mock-api';
 import {provideAccount} from "../rpapp/core/account/account.provider";
 import {provideAuth} from "../rpapp/core/auth/auth.provider";
+import {provideHttpToastrAlerter} from "../rpapp/core/AutoResponseToastrAlerter/http-toastr-alerter.provider";
+import {MatDialogRef} from "@angular/material/dialog";
+import {IndividualConfig, provideToastr, ToastrService} from "ngx-toastr";
 
 export const appConfig: ApplicationConfig = {
     providers: [
         //start rp providers
         provideAccount(),
         provideAuth(),
+        provideHttpToastrAlerter(),
+        provideToastr(),
         //end rp provider
 
         provideAnimations(),

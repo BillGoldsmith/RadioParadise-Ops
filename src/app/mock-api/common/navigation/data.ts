@@ -81,16 +81,23 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Links',
                 type : 'basic',
                 icon : 'heroicons_outline:link',
-                link : '/example'
+                link : '/docs/links'
             },
             {
                 id   : 'strapi',
                 title: 'Strapi',
                 type : 'basic',
                 icon : 'heroicons_outline:map',
-                link : '/example'
+                link : '/docs/strapi'
             }
         ]
+    },
+    {
+        id   : 'accounts',
+        title: 'Accounts',
+        type : 'basic',
+        icon : 'heroicons_outline:users',
+        link : '/accounts/index'
     },
     {
         id   : 'music',
@@ -118,13 +125,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
             }
         ]
     },
-    {
-        id   : 'ccounts',
-        title: 'Accounts',
-        type : 'basic',
-        icon : 'heroicons_outline:users',
-        link : '/example'
-    },
+
 
 ];
 export const compactNavigation: FuseNavigationItem[] = defaultNavigation;

@@ -7,6 +7,7 @@ import {environment} from "../../../../../../zenvironments/environment";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {CommonModule, NgIf} from "@angular/common";
 
 
 @Component({
@@ -14,11 +15,12 @@ import {MatButtonModule} from "@angular/material/button";
     standalone: true,
     templateUrl: './dlg-admin-account-change-username.component.html',
     imports: [
+        CommonModule,
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     styleUrls: ['./dlg-admin-account-change-username.component.scss']
 })

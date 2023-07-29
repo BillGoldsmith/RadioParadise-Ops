@@ -6,12 +6,14 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from "../../../../../../zenvironments/environment";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {CommonModule} from "@angular/common";
 
 @Component({
     selector: 'app-dlg-admin-account-activate',
     standalone: true,
     templateUrl: './dlg-admin-account-activate.component.html',
     imports: [
+        CommonModule,
         MatDialogModule,
         ReactiveFormsModule,
         MatInputModule,
@@ -46,15 +48,19 @@ export class DlgAdminAccountActivateComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-
-        let initialUsername = this.dialogData.username;
+        console.log('dialogdata', this.dialogData);
+        let initialUsername = this.dialogData.username ?? "";
 
         if (this.dialogData.username === this.dialogData.user_id) {
             initialUsername = '';
         }
-        if (initialUsername === null || initialUsername === '') {
-            initialUsername = this.dialogData.email.substring(0, this.dialogData.email.indexOf('@'));
-        }
+
+        try {
+            if (initialUsername === null || initialUsername === '') {
+                initialUsername = this.dialogData.email.substring(0, this.dialogData.email.indexOf('@'));
+            }
+        }catch(e){}
+
         if (initialUsername === null || initialUsername === '') {
             initialUsername = this.dialogData.email;
         }

@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from "../../../../../../zenvironments/environment";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {NgIf} from "@angular/common";
 
 
 @Component({
@@ -16,7 +17,8 @@ import {MatButtonModule} from "@angular/material/button";
         MatDialogModule,
         ReactiveFormsModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        NgIf
     ],
     styleUrls: ['./dlg-admin-account-change-email.component.scss']
 })

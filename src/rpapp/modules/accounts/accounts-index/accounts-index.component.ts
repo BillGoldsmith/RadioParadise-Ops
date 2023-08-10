@@ -349,7 +349,7 @@ export class AccountsIndexComponent implements OnInit {
 
     updateFavsCount(account) {
 
-        const qp = {user_id: account.user_id};
+        const qp = {C_user_id: account.user_id};
         this.http.get(environment.RPSERVER_API + 'list_chan_favscount', {
             params: qp,
             responseType: 'json',

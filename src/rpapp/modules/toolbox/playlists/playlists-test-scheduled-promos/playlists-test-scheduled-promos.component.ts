@@ -178,11 +178,11 @@ export class PlaylistsTestScheduledPromosComponent implements OnInit, OnDestroy 
                 this.channelTestP[chan].bitrates[bitrate].tested++;
             },
             error: error => {
-                if (error.status === 404) {
+                //if (error.status === 404) {
                     // console.log('ERROR: ' + error.status);
                     this.channelTestP[chan].bitrates[bitrate].errorCount++;
                     this.channelTestP[chan].bitrates[bitrate].errors.push(url);
-                }
+                //}
 
             },
 
@@ -204,15 +204,12 @@ export class PlaylistsTestScheduledPromosComponent implements OnInit, OnDestroy 
                 this.channelTestV[chan].bitrates[bitrate].tested++;
             },
             error: error => {
-                console.log('ERROR: ',  error);
-                if (error instanceof HttpErrorResponse){
-                    if (error.status === 404) {
+                    //if (error.status === 404) {
                         console.log('ERROR: ' + error.status);
                         this.channelTestV[chan].bitrates[bitrate].errorCount++;
                         this.channelTestV[chan].bitrates[bitrate].errors.push(url);
-                    }
-                }
-                console.log('e404', this.channelTestV)
+                    //}
+
             },
 
         });

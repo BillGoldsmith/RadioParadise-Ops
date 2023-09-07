@@ -1,5 +1,5 @@
 import {provideHttpClient} from '@angular/common/http';
-import {ApplicationConfig} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom} from '@angular/core';
 import {LuxonDateAdapter} from '@angular/material-luxon-adapter';
 import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import {provideAnimations} from '@angular/platform-browser/animations';
@@ -18,8 +18,10 @@ import {mockApiServices} from 'app/mock-api';
 import {provideAccount} from "../rpapp/core/account/account.provider";
 import {provideAuth} from "../rpapp/core/auth/auth.provider";
 import {provideHttpToastrAlerter} from "../rpapp/core/AutoResponseToastrAlerter/http-toastr-alerter.provider";
-import {MatDialogRef} from "@angular/material/dialog";
-import {IndividualConfig, provideToastr, ToastrService} from "ngx-toastr";
+import {provideToastr} from "ngx-toastr";
+import {NgxsModule} from "@ngxs/store";
+import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
+import {BrainzEntitySearchState} from "../store/brainz-entity-search.state";
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -28,6 +30,9 @@ export const appConfig: ApplicationConfig = {
         provideAuth(),
         provideHttpToastrAlerter(),
         provideToastr(),
+
+
+
         //end rp provider
 
         provideAnimations(),
@@ -107,5 +112,9 @@ export const appConfig: ApplicationConfig = {
                 ],
             },
         }),
+        importProvidersFrom(
+            NgxsModule.forRoot([BrainzEntitySearchState]),
+            NgxsReduxDevtoolsPluginModule.forRoot()
+        )
     ],
 };

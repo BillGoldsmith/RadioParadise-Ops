@@ -22,6 +22,7 @@ import {provideToastr} from "ngx-toastr";
 import {NgxsModule} from "@ngxs/store";
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 import {BrainzEntitySearchState} from "../store/brainz-entity-search.state";
+import {BreadcrumbState} from "../store/breadcrumb.state";
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -30,10 +31,12 @@ export const appConfig: ApplicationConfig = {
         provideAuth(),
         provideHttpToastrAlerter(),
         provideToastr(),
-
-
-
         //end rp provider
+        importProvidersFrom(
+            NgxsModule.forRoot([BrainzEntitySearchState, BreadcrumbState]),
+            NgxsReduxDevtoolsPluginModule.forRoot()
+        ),
+
 
         provideAnimations(),
         provideHttpClient(),
@@ -112,9 +115,6 @@ export const appConfig: ApplicationConfig = {
                 ],
             },
         }),
-        importProvidersFrom(
-            NgxsModule.forRoot([BrainzEntitySearchState]),
-            NgxsReduxDevtoolsPluginModule.forRoot()
-        )
+
     ],
 };

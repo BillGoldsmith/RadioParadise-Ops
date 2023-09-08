@@ -1,10 +1,11 @@
-import {Action, State, StateContext} from '@ngxs/store';
+import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {Injectable} from "@angular/core";
+import {BreadcrumbModel} from "../model/breadcrumb.model";
 
-namespace ActionsBreadcrumb{
+export namespace ActionsBreadcrumb{
 
     export class updateMusic{
-        static readonly type = '[Breadcrumb] update music';
+        static readonly type = '[Breadcrumb] update music-admin';
         constructor(public payload: any) {}
     }
 
@@ -12,7 +13,7 @@ namespace ActionsBreadcrumb{
 
 
 export interface BreadcrumbXSM {
-    music: [];
+    music: BreadcrumbModel[];
 }
 
 export const breadcrumbStateDefaults: BreadcrumbXSM = {
@@ -26,7 +27,7 @@ export const breadcrumbStateDefaults: BreadcrumbXSM = {
 
 
 @Injectable()
-export class BrainzEntitySearchState {
+export class BreadcrumbState {
     constructor() {
     }
 
@@ -34,6 +35,7 @@ export class BrainzEntitySearchState {
     update(ctx: StateContext<BreadcrumbXSM>, action: ActionsBreadcrumb.updateMusic) {
         const state = ctx.getState();
         let payload = action.payload;
+        console.log ('PAYLOAD', payload)
         if (!payload) {
             payload = [];
         }
@@ -43,6 +45,11 @@ export class BrainzEntitySearchState {
         });
     }
 
+
+    @Selector()
+    static music(state: BreadcrumbXSM) {
+        return state.music
+    }
 
 }
 

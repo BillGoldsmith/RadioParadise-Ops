@@ -8,6 +8,7 @@ import {MonitorContainerComponent} from "../rpapp/containers/monitor-container/m
 import {ToolboxContainerComponent} from "../rpapp/containers/toolbox-container/toolbox-container.component";
 import {DocsContainerComponent} from "../rpapp/containers/docs-container/docs-container.component";
 import {AccountsContainerComponent} from "../rpapp/containers/accounts-container/accounts-container.component";
+import {MusicAdminContainerComponent} from "../rpapp/containers/music-admin-container/music-admin-container.component";
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -36,6 +37,8 @@ export const appRoutes: Route[] = [
             {path: 'toolbox', component: ToolboxContainerComponent, loadChildren: () => import('rpapp/modules/toolbox/toolbox.routes')},
             {path: 'docs', component: DocsContainerComponent, loadChildren: () => import('rpapp/modules/docs/docs.routes')},
             {path: 'accounts', component: AccountsContainerComponent, loadChildren: () => import('rpapp/modules/accounts/accounts.routes')},
+            {path: 'music', component: MusicAdminContainerComponent, loadChildren: () => import('rpapp/modules/music-admin/music-admin.routes')},
+
         ]
     }
     ,{ path: '**', redirectTo: 'monitor/bandwidth' }

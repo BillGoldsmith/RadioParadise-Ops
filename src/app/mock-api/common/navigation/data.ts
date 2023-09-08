@@ -100,8 +100,8 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/accounts/index'
     },
     {
-        id   : 'music',
-        title: 'music',
+        id   : 'music-admin',
+        title: 'Music',
         type : 'aside',
         icon : 'heroicons_outline:musical-note',
         children: [
@@ -109,7 +109,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'search',
                 title: 'Search',
                 type : 'basic',
-                link : '/example'
+                link : '/music/search'
             },
             {
                 id   : 'reports',

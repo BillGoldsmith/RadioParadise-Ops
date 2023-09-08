@@ -1964,7 +1964,7 @@ export const feather = [
     'more-vertical',
     'mouse-pointer',
     'move',
-    'music',
+    'music-admin',
     'navigation-2',
     'navigation',
     'octagon',

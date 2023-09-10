@@ -21,7 +21,7 @@ import {provideHttpToastrAlerter} from "../rpapp/core/AutoResponseToastrAlerter/
 import {provideToastr} from "ngx-toastr";
 import {NgxsModule} from "@ngxs/store";
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
-import {BrainzEntitySearchState} from "../store/brainz-entity-search.state";
+import {MusicSearchFilterState} from "../store/music-search-filter.state";
 import {BreadcrumbState} from "../store/breadcrumb.state";
 
 export const appConfig: ApplicationConfig = {
@@ -33,7 +33,7 @@ export const appConfig: ApplicationConfig = {
         provideToastr(),
         //end rp provider
         importProvidersFrom(
-            NgxsModule.forRoot([BrainzEntitySearchState, BreadcrumbState]),
+            NgxsModule.forRoot([MusicSearchFilterState, BreadcrumbState]),
             NgxsReduxDevtoolsPluginModule.forRoot()
         ),
 

@@ -15,9 +15,9 @@ export class MusicAdminBreadcrumbService {
         console.log('PAYLOAD setfortop' );
         //this.store.dispatch(new ActionsBreadcrumb.updateMusic([{title: 'search', url: '/music-admin/index'}]) )
         this.store.dispatch(new ActionsBreadcrumb.updateMusic([
-            {title: 'search', url: '/music-admin/index'},
-            {title: 'search', url: '/music-admin/index'},
-            {title: 'search', url: '/music-admin/index'},
+            {title: 'search', url: '/music/search'},
+            //{title: 'search', url: '/music-admin/index'},
+            //{title: 'search', url: '/music-admin/index'},
         ]) )
     }
 

@@ -4,9 +4,9 @@ import {UUID} from 'angular2-uuid';
 import {ZEROUUID} from "../rpapp/rpconstants.const";
 import {
     MusicSearchFilterCommands
-} from "../rpapp/modules/music-admin/widgets/widget-music-search/music-search-filter.component";
+} from "../rpapp/modules/music-admin/widgets/widget-music-search/widget-music-search.component";
 
-export namespace ActionsMusicSearchFilter{
+export namespace ActionsMusicSearch{
 
     export class update{
         static readonly type = '[MusicSearchFilter] update';
@@ -23,7 +23,7 @@ export namespace ActionsMusicSearchFilter{
 
 
 
-export interface MusicSearchFilterXSM {
+export interface MusicSearchXSM {
     artist_id: string,
     artist_name: string,
     album_id: string,
@@ -35,7 +35,7 @@ export interface MusicSearchFilterXSM {
     uuid: string,
 }
 
-export const musicSearchFilterStateDefaults: MusicSearchFilterXSM = {
+export const musicSearchStateDefaults: MusicSearchXSM = {
     artist_id: '',
     artist_name: '',
     album_id: '',
@@ -47,28 +47,28 @@ export const musicSearchFilterStateDefaults: MusicSearchFilterXSM = {
     uuid: '',
 };
 
-@State<MusicSearchFilterXSM>({
+@State<MusicSearchXSM>({
     name: 'musicSearchFilter',
-    defaults: musicSearchFilterStateDefaults
+    defaults: musicSearchStateDefaults
 })
 
 
 @Injectable()
-export class MusicSearchFilterState {
+export class MusicSearchState {
     constructor() {
     }
 
-    @Action(ActionsMusicSearchFilter.update)
-    update(ctx: StateContext<MusicSearchFilterXSM>, action: ActionsMusicSearchFilter.update) {
+    @Action(ActionsMusicSearch.update)
+    update(ctx: StateContext<MusicSearchXSM>, action: ActionsMusicSearch.update) {
         ctx.setState({
             ...action.payload
         });
     }
 
-    @Action(ActionsMusicSearchFilter.reset)
-    reset(ctx: StateContext<MusicSearchFilterXSM>, action: ActionsMusicSearchFilter.reset) {
+    @Action(ActionsMusicSearch.reset)
+    reset(ctx: StateContext<MusicSearchXSM>, action: ActionsMusicSearch.reset) {
         ctx.setState({
-            ...musicSearchFilterStateDefaults,
+            ...musicSearchStateDefaults,
             uuid: UUID.UUID()
         });
     }

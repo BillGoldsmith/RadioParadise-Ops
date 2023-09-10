@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MusicSearchFilterComponent } from './music-search-filter.component';
+import { WidgetMusicSearchComponent } from './widget-music-search.component';
 
 describe('MusicSearchFilterComponent', () => {
-  let component: MusicSearchFilterComponent;
-  let fixture: ComponentFixture<MusicSearchFilterComponent>;
+  let component: WidgetMusicSearchComponent;
+  let fixture: ComponentFixture<WidgetMusicSearchComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MusicSearchFilterComponent]
+      imports: [WidgetMusicSearchComponent]
     });
-    fixture = TestBed.createComponent(MusicSearchFilterComponent);
+    fixture = TestBed.createComponent(WidgetMusicSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,10 +10,10 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
   selector: 'app-widget-music-search',
   standalone: true,
     imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSlideToggleModule, FormsModule,],
-  templateUrl: './music-search-filter.component.html',
-  styleUrls: ['./music-search-filter.component.scss']
+  templateUrl: './widget-music-search.component.html',
+  styleUrls: ['./widget-music-search.component.scss']
 })
-export class MusicSearchFilterComponent implements OnInit{
+export class WidgetMusicSearchComponent implements OnInit{
 
     showIds = false;
 

@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common';
   selector: 'app-widget-music-brainz-explorer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './music-brainz-explorer.component.html',
-  styleUrls: ['./music-brainz-explorer.component.scss']
+  templateUrl: './widget-music-brainz-explorer.component.html',
+  styleUrls: ['./widget-music-brainz-explorer.component.scss']
 })
-export class MusicBrainzExplorerComponent {
+export class WidgetMusicBrainzExplorerComponent {
 
 }

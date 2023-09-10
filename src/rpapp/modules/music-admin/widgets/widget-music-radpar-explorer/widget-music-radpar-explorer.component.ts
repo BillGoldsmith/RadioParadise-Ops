@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common';
   selector: 'app-widget-music-radpar-explorer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './music-radpar-explorer.component.html',
-  styleUrls: ['./music-radpar-explorer.component.scss']
+  templateUrl: './widget-music-radpar-explorer.component.html',
+  styleUrls: ['./widget-music-radpar-explorer.component.scss']
 })
-export class MusicRadparExplorerComponent {
+export class WidgetMusicRadparExplorerComponent {
 
 }

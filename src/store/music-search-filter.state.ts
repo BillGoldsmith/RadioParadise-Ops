@@ -4,7 +4,7 @@ import {UUID} from 'angular2-uuid';
 import {ZEROUUID} from "../rpapp/rpconstants.const";
 import {
     MusicSearchFilterCommands
-} from "../rpapp/modules/music-admin/components/music-search-filter/music-search-filter.component";
+} from "../rpapp/modules/music-admin/widgets/widget-music-search/music-search-filter.component";
 
 export namespace ActionsMusicSearchFilter{
 

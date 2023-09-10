@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-music-brainz-explorer',
+  selector: 'app-widget-music-brainz-explorer',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './music-brainz-explorer.component.html',

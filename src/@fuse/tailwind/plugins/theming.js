@@ -124,7 +124,7 @@ const theming = plugin.withOptions((options) => ({
         }
 
         /**
-         * Iterate through the user's themes and build Tailwind components containing
+         * Iterate through the user's themes and build Tailwind widgets containing
          * CSS Custom Properties using the colors from them. This allows switching
          * themes by simply replacing a class name as well as nesting them.
          */

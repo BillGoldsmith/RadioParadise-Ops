@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MusicAdminBreadcrumbService} from "../../../containers/music-admin-container/music-admin-breadcrumb.service";
-import {MusicSearchFilterComponent} from "../components/music-search-filter/music-search-filter.component";
-import {MusicBrainzExplorerComponent} from "../components/music-brainz-explorer/music-brainz-explorer.component";
+import {MusicSearchFilterComponent} from "../widgets/widget-music-search/music-search-filter.component";
+import {MusicBrainzExplorerComponent} from "../widgets/widget-music-brainz-explorer/music-brainz-explorer.component";
 
 @Component({
   selector: 'app-music-admin-search',

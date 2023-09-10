@@ -5,8 +5,8 @@ module.exports = plugin(({
 }) =>
 {
     /*
-    * Add base components. These are very important for everything to look
-    * correct. We are adding these to the 'components' layer because they must
+    * Add base widgets. These are very important for everything to look
+    * correct. We are adding these to the 'widgets' layer because they must
     * be defined before pretty much everything else.
     */
     addComponents(

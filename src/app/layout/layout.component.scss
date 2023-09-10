@@ -13,7 +13,7 @@ layout {
         width: 100%;
     }
 
-    /* Base styles for components that load as a route */
+    /* Base styles for widgets that load as a route */
     router-outlet {
 
         + * {

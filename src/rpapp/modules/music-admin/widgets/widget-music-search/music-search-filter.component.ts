@@ -7,7 +7,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @Component({
-  selector: 'app-music-search-filter',
+  selector: 'app-widget-music-search',
   standalone: true,
     imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSlideToggleModule, FormsModule,],
   templateUrl: './music-search-filter.component.html',

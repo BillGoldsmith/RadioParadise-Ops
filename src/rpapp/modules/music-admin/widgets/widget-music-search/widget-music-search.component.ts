@@ -5,6 +5,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {Store} from "@ngxs/store";
+import {ActionsMusicSearch} from "../../../../../store/music-search.state";
 
 @Component({
   selector: 'app-widget-music-search',
@@ -29,7 +31,8 @@ export class WidgetMusicSearchComponent implements OnInit{
     });
     submitted = false;
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(private formBuilder: FormBuilder,
+                private store: Store) {}
 
     ngOnInit(): void {
         this.form = this.formBuilder.group(
@@ -46,8 +49,10 @@ export class WidgetMusicSearchComponent implements OnInit{
         );
     }
 
-    clickSearch(action){
-
+    clickSearch(command){
+        this.form.patchValue({command: command});
+        const formData = this.form.value;
+        this.store.dispatch(new ActionsMusicSearch.update(formData));
     }
 
     clickClear(group){
@@ -66,7 +71,8 @@ export class WidgetMusicSearchComponent implements OnInit{
     }
 
     clickReset(){
-
+        this.form.reset();
+        this.store.dispatch(new ActionsMusicSearch.reset());
     }
 
     protected readonly MusicSearchFilterCommands = MusicSearchFilterCommands;
@@ -79,6 +85,5 @@ export namespace MusicSearchFilterCommands{
     export const searchAlbum = 'SEARCH-ALBUM';
     export const searchSong = 'SEARCH-SONG';
     export const reset = 'RESET';
-
 
 }

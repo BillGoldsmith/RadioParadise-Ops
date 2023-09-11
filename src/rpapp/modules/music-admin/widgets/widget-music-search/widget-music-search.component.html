@@ -48,7 +48,7 @@
                 />
             </mat-form-field>
 
-            <button mat-raised-button color="primary">search</button>
+            <button mat-raised-button color="primary" (click)="clickSearch(MusicSearchFilterCommands.searchAlbum)">search</button>
             <button mat-stroked-button color="accent" (click)="clickClear('album')">clear</button>
 
         </div>
@@ -83,7 +83,7 @@
                 />
             </mat-form-field>
 
-            <button mat-raised-button color="primary">search</button>
+            <button mat-raised-button color="primary" (click)="clickSearch(MusicSearchFilterCommands.searchSong)">search</button>
             <button mat-stroked-button color="accent" (click)="clickClear('song')">clear</button>
 
         </div>

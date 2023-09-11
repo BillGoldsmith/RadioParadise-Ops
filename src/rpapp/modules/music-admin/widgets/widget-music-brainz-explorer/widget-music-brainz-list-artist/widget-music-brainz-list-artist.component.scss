@@ -1,0 +1,19 @@
+
+
+table {
+    width: 100%;
+}
+
+
+
+@container wrapper-app-widget-music-brainz-list-artist (width > 0) {
+    .example-viewport {
+        height: 100cqh;
+        width: 100%;
+        overflow: auto;
+
+    }
+}
+
+
+

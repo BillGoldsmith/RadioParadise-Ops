@@ -15,12 +15,10 @@ export namespace ActionsMusicSearch{
 
     export class reset{
         static readonly type = '[MusicSearchFilter] reset';
-        constructor(public payload: any) {}
+        constructor() {}
     }
 
 }
-
-
 
 
 export interface MusicSearchXSM {
@@ -48,7 +46,7 @@ export const musicSearchStateDefaults: MusicSearchXSM = {
 };
 
 @State<MusicSearchXSM>({
-    name: 'musicSearchFilter',
+    name: 'musicSearch',
     defaults: musicSearchStateDefaults
 })
 

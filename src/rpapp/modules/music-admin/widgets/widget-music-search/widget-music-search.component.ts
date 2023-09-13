@@ -75,11 +75,11 @@ export class WidgetMusicSearchComponent implements OnInit{
         this.store.dispatch(new ActionsMusicSearch.reset());
     }
 
-    protected readonly MusicSearchFilterCommands = MusicSearchFilterCommands;
+    protected readonly MusicSearchFilterCommands = MusicSearchCommands;
 }
 
 
-export namespace MusicSearchFilterCommands{
+export namespace MusicSearchCommands{
 
     export const searchArtist = 'SEARCH-ARTIST';
     export const searchAlbum = 'SEARCH-ALBUM';

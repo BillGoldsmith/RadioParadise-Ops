@@ -33,7 +33,6 @@
         "lodash-es": "4.17.21",
         "luxon": "3.3.0",
         "ng-apexcharts": "1.7.6",
-        "ng-table-virtual-scroll": "^1.6.0",
         "ngx-cookie-service": "^16.0.0",
         "ngx-quill": "22.0.0",
         "ngx-toastr": "17.0.2",

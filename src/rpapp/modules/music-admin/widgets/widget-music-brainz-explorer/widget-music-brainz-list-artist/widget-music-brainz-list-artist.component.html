@@ -1,23 +1,6 @@
-
-<cdk-virtual-scroll-viewport class="example-viewport" [itemSize]="52">
-    <table mat-table [dataSource]="data" class="mat-elevation-z8">
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="desc">
-            <th mat-header-cell *matHeaderCellDef> Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+    <ng-container *cdkVirtualFor="let item of datasource">
+        <div *ngIf="!item" class="example-item">Loading...</div>
+        <div *ngIf="item" class="example-item">{{item?.id }}</div>
+    </ng-container>
 </cdk-virtual-scroll-viewport>
-

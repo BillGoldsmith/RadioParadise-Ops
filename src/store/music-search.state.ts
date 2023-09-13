@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {UUID} from 'angular2-uuid';
 import {ZEROUUID} from "../rpapp/rpconstants.const";
 import {
-    MusicSearchFilterCommands
+    MusicSearchCommands
 } from "../rpapp/modules/music-admin/widgets/widget-music-search/widget-music-search.component";
 
 export namespace ActionsMusicSearch{
@@ -41,7 +41,7 @@ export const musicSearchStateDefaults: MusicSearchXSM = {
     release_id: '',
     song_id: '',
     song_name: '',
-    command: MusicSearchFilterCommands.reset,
+    command: MusicSearchCommands.reset,
     uuid: '',
 };
 

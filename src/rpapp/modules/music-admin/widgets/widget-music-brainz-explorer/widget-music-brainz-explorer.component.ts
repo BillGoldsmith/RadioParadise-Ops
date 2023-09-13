@@ -6,6 +6,10 @@ import {MusicSearchState, MusicSearchXSM} from "../../../../../store/music-searc
 import {
     WidgetMusicBrainzListArtistComponent
 } from "./widget-music-brainz-list-artist/widget-music-brainz-list-artist.component";
+import {
+    BrainzExplorerBreadtrail,
+    BrainzExplorerBreadtrailNode
+} from "./widget-music-brainz-explorer-breadtrail.service";
 
 @Component({
   selector: 'app-widget-music-brainz-explorer',
@@ -20,6 +24,9 @@ export class WidgetMusicBrainzExplorerComponent implements OnInit{
     @Select(MusicSearchState) musicSearch$: Observable<MusicSearchXSM>;
     musicSearchXSM!: MusicSearchXSM;
 
+    brainzExplorerBreadtrail: BrainzExplorerBreadtrail = new BrainzExplorerBreadtrail();
+
+
     constructor() {
 
     }
@@ -33,4 +40,9 @@ export class WidgetMusicBrainzExplorerComponent implements OnInit{
 
     }
 
+
+
 }
+
+
+

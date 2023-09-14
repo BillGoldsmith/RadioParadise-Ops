@@ -1,4 +1,4 @@
-<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" *ngIf="!resettingDatasource">
     <ng-container *cdkVirtualFor="let item of datasource">
         <div *ngIf="!item" class="example-item">Loading...</div>
         <div *ngIf="item" class="example-item">{{item?.id }}</div>

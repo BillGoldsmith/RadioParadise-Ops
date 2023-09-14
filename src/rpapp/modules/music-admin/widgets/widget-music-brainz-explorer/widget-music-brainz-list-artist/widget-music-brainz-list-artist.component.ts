@@ -1,9 +1,9 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import {BrainzExplorerBreadtrailNode} from "../widget-music-brainz-explorer-breadtrail.service";
 import {BehaviorSubject, Observable, Subscription} from "rxjs";
-import {CollectionViewer, DataSource, ListRange} from "@angular/cdk/collections";
+import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 
 
 @Component({
@@ -15,47 +15,63 @@ import {CollectionViewer, DataSource, ListRange} from "@angular/cdk/collections"
 })
 export class WidgetMusicBrainzListArtistComponent {
 
-    @ViewChild(CdkVirtualScrollViewport) viewport?: CdkVirtualScrollViewport;
+
     @Input() brainzExplorerBreadtrailNode: BrainzExplorerBreadtrailNode;
 
-    datasource: BrainzExplorerArtistDataSource; // = new MyDataSource();
+    datasource: BrainzExplorerArtistDataSource<BrainzExplorerArtistRow>;
+    resettingDatasource = false;  // needed for cdk bug.  https://github.com/angular/components/issues/22464
 
     constructor() {
 
-        setTimeout(() => {
-            this.updateDataSource()
-        }, 4000);
+        this.datasource = new BrainzExplorerArtistDataSource<BrainzExplorerArtistRow>(this.brainzExplorerBreadtrailNode);
 
-    }
+        setTimeout( () => {this.resettingDatasource = true}, 4000);
 
-
-    updateDataSource(){
-        const ds = new BrainzExplorerArtistDataSource(1000);
-        if (this.viewport) ds.setRange(this.viewport.getRenderedRange());
-        this.datasource = ds;
-        if (this.viewport) this.viewport.scrollToIndex(0);
+        setTimeout( () => {
+            this.datasource = new BrainzExplorerArtistDataSource<BrainzExplorerArtistRow>(this.brainzExplorerBreadtrailNode);
+            this.resettingDatasource = false;
+        }, 8000);
     }
 
 
 }
 
-export class BrainzExplorerArtistDataSource extends DataSource<BrainzExplorerArtistRow | undefined> {
-    private _length = 20;
-    private _pageSize = 20;
-    private _cachedData = Array.from<BrainzExplorerArtistRow>({length: this._length});
+export class BrainzExplorerArtistDataSource<T> extends DataSource<T | undefined> {
+    private _length = 1;
+    private _pageSize = 25;
+    private _cachedData = Array.from<T>({length: this._length});
     private _fetchedPages = new Set<number>();
-    private readonly _dataStream = new BehaviorSubject<(BrainzExplorerArtistRow | undefined)[]>(this._cachedData);
+    private readonly _dataStream = new BehaviorSubject<(T | undefined)[]>(this._cachedData);
     private readonly _subscription = new Subscription();
 
-    constructor(length: number =20) {
+    initialized = false;
+    brainzExplorerBreadtrailNode: BrainzExplorerBreadtrailNode;
+
+
+    constructor(brainzExplorerBreadtrailNode: BrainzExplorerBreadtrailNode) {
         super();
-        this._length = length;
-        this._cachedData = Array.from<BrainzExplorerArtistRow>({length: this._length});
+        this.brainzExplorerBreadtrailNode = brainzExplorerBreadtrailNode;
     }
 
-    connect(collectionViewer: CollectionViewer): Observable<(BrainzExplorerArtistRow | undefined)[]> {
+    initialize(length: number) {
+        if (this.initialized) {
+            return;
+        }
+
+        this._length = length;
+        this._cachedData = Array.from<T>({length: this._length});
+        this.initialized = true;
+    }
+
+    connect(collectionViewer: CollectionViewer): Observable<(T | undefined)[]> {
         this._subscription.add(
-            collectionViewer.viewChange.subscribe(r => this.setRange(r)),
+            collectionViewer.viewChange.subscribe(range => {
+                const startPage = this._getPageForIndex(range.start);
+                const endPage = this._getPageForIndex(range.end - 1);
+                for (let i = startPage; i <= endPage; i++) {
+                    this._fetchPage(i);
+                }
+            }),
         );
         return this._dataStream;
     }
@@ -68,7 +84,7 @@ export class BrainzExplorerArtistDataSource extends DataSource<BrainzExplorerArt
         return Math.floor(index / this._pageSize);
     }
 
-    private _fetchPage(page: number) {
+    private _fetchPage(page: number, initialize = false) {
         if (this._fetchedPages.has(page)) {
             return;
         }
@@ -77,24 +93,24 @@ export class BrainzExplorerArtistDataSource extends DataSource<BrainzExplorerArt
 
         // Use `setTimeout` to simulate fetching data from server.
         setTimeout(() => {
+
+            if (!this.initialized) {
+                this.initialize(500);
+            }
+
+
             this._cachedData.splice(
                 page * this._pageSize,
                 this._pageSize,
-                ...Array.from({length: this._pageSize}).map((_, i) => ({id: ('x'+i), name: 'h'}) ),
+                ...Array.from({length: this._pageSize}).map((_, i) => ({
+                    id: ('x' + (page * this._pageSize + i)),
+                    name: 'h'
+                } as T)),
             );
             this._dataStream.next(this._cachedData);
         }, Math.random() * 1000 + 200);
 
 
-    }
-
-    setRange(range: ListRange): void {
-        // console.log('MyDataSource setRange', {range});
-        const startPage = this._getPageForIndex(range.start);
-        const endPage = this._getPageForIndex(range.end - 1);
-        for (let i = startPage; i <= endPage; i++) {
-            this._fetchPage(i);
-        }
     }
 
 

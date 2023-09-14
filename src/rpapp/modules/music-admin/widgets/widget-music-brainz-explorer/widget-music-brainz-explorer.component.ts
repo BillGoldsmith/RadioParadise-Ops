@@ -8,7 +8,7 @@ import {
 } from "./widget-music-brainz-list-artist/widget-music-brainz-list-artist.component";
 import {
     BrainzExplorerBreadtrail,
-    BrainzExplorerBreadtrailNode
+    BrainzExplorerBreadtrailNode, WidgetMusicBrainzExplorerBreadtrailService
 } from "./widget-music-brainz-explorer-breadtrail.service";
 
 @Component({
@@ -27,7 +27,7 @@ export class WidgetMusicBrainzExplorerComponent implements OnInit{
     brainzExplorerBreadtrail: BrainzExplorerBreadtrail = new BrainzExplorerBreadtrail();
 
 
-    constructor() {
+    constructor(private widgetMusicBrainzExplorerBreadtrailService: WidgetMusicBrainzExplorerBreadtrailService) {
 
     }
 
@@ -35,6 +35,7 @@ export class WidgetMusicBrainzExplorerComponent implements OnInit{
 
         this.musicSearch$.subscribe(next => {
             this.musicSearchXSM = next;
+            this.brainzExplorerBreadtrail = this.widgetMusicBrainzExplorerBreadtrailService.createFromMusicSearch(this.musicSearchXSM);
             console.log('musicSearchXSM', this.musicSearchXSM)
         });
 

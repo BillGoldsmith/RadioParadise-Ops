@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MusicSearchXSM} from "../../../../../store/music-search.state";
+import {MusicSearchCommands} from "../widget-music-search/widget-music-search.component";
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class WidgetMusicBrainzExplorerBreadtrailService {
     constructor() {
     }
 
-    startBreadTrail(node: BrainzExplorerBreadtrailNode): BrainzExplorerBreadtrail {
+    startBreadTrailFromNode(node: BrainzExplorerBreadtrailNode): BrainzExplorerBreadtrail {
         this.brainzExplorerBreadtrail = new BrainzExplorerBreadtrail();
         this.assignNode(node);
         return this.brainzExplorerBreadtrail;
@@ -47,6 +48,48 @@ export class WidgetMusicBrainzExplorerBreadtrailService {
             this.brainzExplorerBreadtrail.recording = node;
         }
     }
+
+
+    createFromMusicSearch(musicSearchXSM: MusicSearchXSM): BrainzExplorerBreadtrail{
+
+        const newBreadTrail = new BrainzExplorerBreadtrail();
+
+        if ( musicSearchXSM.command === MusicSearchCommands.reset ){
+
+        }else if ( musicSearchXSM.command === MusicSearchCommands.searchArtist ){
+
+            const node = new BrainzExplorerBreadtrailNode();
+            node.musicSearchXSM = musicSearchXSM;
+            node.label = musicSearchXSM.command;
+            node.entity = BrainzEntityType.Artist;
+            node.uuid = musicSearchXSM.uuid;
+            newBreadTrail.artist = node;
+
+        }else if ( musicSearchXSM.command === MusicSearchCommands.searchAlbum ){
+
+            const node = new BrainzExplorerBreadtrailNode();
+            node.musicSearchXSM = musicSearchXSM;
+            node.label = musicSearchXSM.command;
+            node.entity = BrainzEntityType.ReleaseGroup;
+            node.uuid = musicSearchXSM.uuid;
+            newBreadTrail.release = node;
+
+        }else if ( musicSearchXSM.command === MusicSearchCommands.searchSong ){
+
+            const node = new BrainzExplorerBreadtrailNode();
+            node.musicSearchXSM = musicSearchXSM;
+            node.label = musicSearchXSM.command;
+            node.entity = BrainzEntityType.Recording;
+            node.uuid = musicSearchXSM.uuid;
+            newBreadTrail.recording = node;
+
+        }
+
+        this.brainzExplorerBreadtrail = newBreadTrail;
+        return this.brainzExplorerBreadtrail;
+    }
+
+
 
 }
 

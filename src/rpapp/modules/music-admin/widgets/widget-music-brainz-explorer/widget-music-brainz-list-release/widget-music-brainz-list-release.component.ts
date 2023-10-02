@@ -1,9 +1,10 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import {MatButtonModule} from "@angular/material/button";
 import {
-    BrainzExplorerBreadtrailNode, BrainzExplorerNodeType,
+    BrainzExplorerBreadtrailNode,
+    BrainzExplorerNodeType,
     WidgetMusicBrainzExplorerBreadtrailService
 } from "../widget-music-brainz-explorer-breadtrail.service";
 import {HttpClient} from "@angular/common/http";
@@ -15,18 +16,17 @@ import {BehaviorSubject, Observable, Subscription} from "rxjs";
 import {environment} from "../../../../../../zenvironments/environment";
 
 @Component({
-  selector: 'app-widget-music-brainz-list-release-group',
+  selector: 'app-widget-music-brainz-list-release',
   standalone: true,
     imports: [CommonModule, CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport, MatButtonModule],
-  templateUrl: './widget-music-brainz-list-release-group.component.html',
-  styleUrls: ['./widget-music-brainz-list-release-group.component.scss']
+  templateUrl: './widget-music-brainz-list-release.component.html',
+  styleUrls: ['./widget-music-brainz-list-release.component.scss']
 })
-
-export class WidgetMusicBrainzListReleaseGroupComponent implements OnChanges{
+export class WidgetMusicBrainzListReleaseComponent implements OnChanges{
 
     @Input() brainzExplorerBreadtrailNode: BrainzExplorerBreadtrailNode;
 
-    datasource: BrainzExplorerReleaseGroupDataSource<BrainzExplorerReleaseGroupRow>;
+    datasource: BrainzExplorerReleaseDataSource<BrainzExplorerReleaseRow>;
     resettingDatasource = false;  // needed for cdk bug.  https://github.com/angular/components/issues/22464
 
     constructor(private http: HttpClient,
@@ -38,7 +38,7 @@ export class WidgetMusicBrainzListReleaseGroupComponent implements OnChanges{
     ngOnChanges(changes: SimpleChanges): void {
         console.log('ngOnChanges', changes);
         this.resettingDatasource = true;
-        this.datasource = new BrainzExplorerReleaseGroupDataSource<BrainzExplorerReleaseGroupRow>(
+        this.datasource = new BrainzExplorerReleaseDataSource<BrainzExplorerReleaseRow>(
             this.brainzExplorerBreadtrailNode,
             this.http,
             this.queryUtilsService,
@@ -52,10 +52,10 @@ export class WidgetMusicBrainzListReleaseGroupComponent implements OnChanges{
     }
 
 
-    clickReleaseGroup(item){
+    clickRelease(item){
         console.log('item', item);
         const node = new BrainzExplorerBreadtrailNode();
-        node.brainzExplorerNodeType = BrainzExplorerNodeType.ListRelease;
+        node.brainzExplorerNodeType = BrainzExplorerNodeType.ListRecording;
         node.brainzId = item.id;
         node.label = item.name;
         node.uuid = UUID.UUID();
@@ -69,7 +69,7 @@ export class WidgetMusicBrainzListReleaseGroupComponent implements OnChanges{
 
 
 
-export class BrainzExplorerReleaseGroupDataSource<T> extends DataSource<T | undefined> {
+export class BrainzExplorerReleaseDataSource<T> extends DataSource<T | undefined> {
     private _length = 1;
     private _pageSize = 25;
     private _cachedData = Array.from<T>({length: this._length});
@@ -145,29 +145,23 @@ export class BrainzExplorerReleaseGroupDataSource<T> extends DataSource<T | unde
                 this.initialize(data.count);
             }
 
-            const returnedLength = data['release-groups'].length;
+            const returnedLength = data['releases'].length;
 
             this._cachedData.splice(
                 page * this._pageSize,
                 returnedLength,
-                ...data['release-groups'] as T[],
+                ...data['releases'] as T[],
             );
 
             this._dataStream.next(this._cachedData);
 
             console.log('fetch page', data);
 
-
         });
-
-
-
     }
-
-
 }
 
-export interface BrainzExplorerReleaseGroupRow {
+export interface BrainzExplorerReleaseRow {
     id: string;
     name: string;
 }

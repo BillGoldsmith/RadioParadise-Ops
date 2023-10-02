@@ -160,26 +160,7 @@ export class BrainzExplorerArtistDataSource<T> extends DataSource<T | undefined>
 
         });
 
-        /*
-        // Use `setTimeout` to simulate fetching data from server.
-        setTimeout(() => {
 
-            if (!this.initialized) {
-                this.initialize(500);
-            }
-
-
-            this._cachedData.splice(
-                page * this._pageSize,
-                this._pageSize,
-                ...Array.from({length: this._pageSize}).map((_, i) => ({
-                    id: ('x' + (page * this._pageSize + i)),
-                    name: 'h'
-                } as T)),
-            );
-            this._dataStream.next(this._cachedData);
-        }, Math.random() * 1000 + 200);
-        */
 
     }
 

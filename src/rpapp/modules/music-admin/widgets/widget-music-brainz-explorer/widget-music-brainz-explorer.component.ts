@@ -13,11 +13,14 @@ import {
 import {
     WidgetMusicBrainzListReleaseGroupComponent
 } from "./widget-music-brainz-list-release-group/widget-music-brainz-list-release-group.component";
+import {
+    WidgetMusicBrainzListReleaseComponent
+} from "./widget-music-brainz-list-release/widget-music-brainz-list-release.component";
 
 @Component({
   selector: 'app-widget-music-brainz-explorer',
   standalone: true,
-    imports: [CommonModule, WidgetMusicBrainzListArtistComponent, WidgetMusicBrainzListReleaseGroupComponent],
+    imports: [CommonModule, WidgetMusicBrainzListArtistComponent, WidgetMusicBrainzListReleaseGroupComponent, WidgetMusicBrainzListReleaseComponent],
   templateUrl: './widget-music-brainz-explorer.component.html',
   styleUrls: ['./widget-music-brainz-explorer.component.scss']
 })

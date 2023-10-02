@@ -62,6 +62,13 @@ export class BrainzQueryUtilsService {
             queryParameters.push( {parameter: 'status', value:'official'} );
             query = new BrainzEntitySearch( BrainzEntityType.ReleaseGroup, queryParameters).toString(offset, limit);
 
+        }else if ( brainzExplorerBreadtrailNode.brainzExplorerNodeType === BrainzExplorerNodeType.ListRelease ){
+
+            const queryParameters: BrainzEntityQueryParameter[] = [];
+            queryParameters.push( {parameter: 'rgid', value:brainzExplorerBreadtrailNode.brainzId} );
+            queryParameters.push( {parameter: 'status', value:'official'} );
+            query = new BrainzEntitySearch( BrainzEntityType.Release, queryParameters).toString(offset, limit);
+
         }
 
         return query;

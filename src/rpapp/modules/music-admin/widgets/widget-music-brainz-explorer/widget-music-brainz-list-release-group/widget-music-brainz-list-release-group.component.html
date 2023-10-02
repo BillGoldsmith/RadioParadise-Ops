@@ -1,6 +1,6 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" *ngIf="!resettingDatasource">
     <ng-container *cdkVirtualFor="let item of datasource">
         <div *ngIf="!item" class="example-item">Loading...</div>
-        <div *ngIf="item" class="example-item"><button mat-button color="primary" (click)="clickArtist(item)">{{item?.name }}</button></div>
+        <div *ngIf="item" class="example-item"><button mat-button color="primary" (click)="clickReleaseGroup(item)">{{item?.title }}</button></div>
     </ng-container>
 </cdk-virtual-scroll-viewport>

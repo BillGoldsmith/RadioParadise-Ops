@@ -12,3 +12,35 @@
     background-color: #feb246 !important;
     color: black !important;
 }
+
+
+.overlay-container {
+    display: grid;
+
+    &.center{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .centered-contain{
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .centered-auto{
+        background-size: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .centered-cover{
+        background-size: cover;
+        background-position: center;
+    }
+
+
+}
+.overlay-container > * {
+    grid-area: 1 / 1 / 2 / 2;
+}

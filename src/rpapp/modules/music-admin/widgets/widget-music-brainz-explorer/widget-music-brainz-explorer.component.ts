@@ -10,11 +10,14 @@ import {
     BrainzExplorerBreadtrail,
     BrainzExplorerBreadtrailNode, WidgetMusicBrainzExplorerBreadtrailService
 } from "./widget-music-brainz-explorer-breadtrail.service";
+import {
+    WidgetMusicBrainzListReleaseGroupComponent
+} from "./widget-music-brainz-list-release-group/widget-music-brainz-list-release-group.component";
 
 @Component({
   selector: 'app-widget-music-brainz-explorer',
   standalone: true,
-    imports: [CommonModule, WidgetMusicBrainzListArtistComponent],
+    imports: [CommonModule, WidgetMusicBrainzListArtistComponent, WidgetMusicBrainzListReleaseGroupComponent],
   templateUrl: './widget-music-brainz-explorer.component.html',
   styleUrls: ['./widget-music-brainz-explorer.component.scss']
 })
@@ -40,6 +43,8 @@ export class WidgetMusicBrainzExplorerComponent implements OnInit{
         });
 
     }
+
+
 
 
 

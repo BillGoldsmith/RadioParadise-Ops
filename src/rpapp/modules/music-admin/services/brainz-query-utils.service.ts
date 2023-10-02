@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {QueryUtilsService} from "../../../services/query-utils.service";
 import {
     BrainzEntityType,
-    BrainzExplorerBreadtrailNode
+    BrainzExplorerBreadtrailNode,
+    BrainzExplorerNodeType
 } from "../widgets/widget-music-brainz-explorer/widget-music-brainz-explorer-breadtrail.service";
 
 @Injectable({
@@ -17,12 +18,12 @@ export class BrainzQueryUtilsService {
 
         let query = '';
 
-        if (brainzExplorerBreadtrailNode.entity === BrainzEntityType.Artist){
+        if (brainzExplorerBreadtrailNode.brainzExplorerNodeType === BrainzExplorerNodeType.ListArtist){
+
+            const queryParameters: BrainzEntityQueryParameter[] = [];
 
             if(brainzExplorerBreadtrailNode.musicSearchXSM){
                 const musicSearchXSM = brainzExplorerBreadtrailNode.musicSearchXSM;
-
-                const queryParameters: BrainzEntityQueryParameter[] = [];
 
                 if (musicSearchXSM.artist_id){
                     queryParameters.push( {parameter: 'arid', value:musicSearchXSM.artist_id} );
@@ -30,10 +31,36 @@ export class BrainzQueryUtilsService {
                     queryParameters.push( {parameter: 'artist', value:musicSearchXSM.artist_name} );
                 }
 
-                query = new BrainzEntitySearch( BrainzEntityType.Artist, queryParameters).toString(offset, limit);
+            }else{
+                queryParameters.push( {parameter: 'arid', value:brainzExplorerBreadtrailNode.brainzId} );
+            }
+            query = new BrainzEntitySearch( BrainzEntityType.Artist, queryParameters).toString(offset, limit);
 
+
+        }else if ( brainzExplorerBreadtrailNode.brainzExplorerNodeType === BrainzExplorerNodeType.ListReleaseGroup ){
+
+            const queryParameters: BrainzEntityQueryParameter[] = [];
+
+            if(brainzExplorerBreadtrailNode.musicSearchXSM){
+                const musicSearchXSM = brainzExplorerBreadtrailNode.musicSearchXSM;
+
+                if (musicSearchXSM.artist_id){
+                    queryParameters.push( {parameter: 'arid', value:musicSearchXSM.artist_id} );
+                }else{
+                    queryParameters.push( {parameter: 'artist', value:musicSearchXSM.artist_name} );
+                }
+
+                if (musicSearchXSM.album_id){
+                    queryParameters.push( {parameter: 'rgid', value:musicSearchXSM.album_id} );
+                }else{
+                    queryParameters.push( {parameter: 'release', value:musicSearchXSM.album_name} );
+                }
+            }else{
+                queryParameters.push( {parameter: 'arid', value:brainzExplorerBreadtrailNode.brainzId} );
             }
 
+            queryParameters.push( {parameter: 'status', value:'official'} );
+            query = new BrainzEntitySearch( BrainzEntityType.ReleaseGroup, queryParameters).toString(offset, limit);
 
         }
 

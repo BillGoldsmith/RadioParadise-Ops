@@ -6,8 +6,12 @@
     </div>
 
     <div class="flex-grow container-music-brainz-explorer-list">
+        <div class="overlay-container">
+            <app-widget-music-brainz-list-artist *ngIf="brainzExplorerBreadtrail.list_artist" [brainzExplorerBreadtrailNode]="brainzExplorerBreadtrail.list_artist"></app-widget-music-brainz-list-artist>
+            <app-widget-music-brainz-list-release-group *ngIf="brainzExplorerBreadtrail.list_release_group" [brainzExplorerBreadtrailNode]="brainzExplorerBreadtrail.list_release_group"></app-widget-music-brainz-list-release-group>
 
-        <app-widget-music-brainz-list-artist [brainzExplorerBreadtrailNode]="brainzExplorerBreadtrail.artist"></app-widget-music-brainz-list-artist>
+        </div>
+
 
     </div>
 </div>

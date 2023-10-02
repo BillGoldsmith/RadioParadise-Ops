@@ -1,34 +1,32 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {Component, Input, SimpleChanges} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import {MatButtonModule} from "@angular/material/button";
 import {
-    BrainzExplorerBreadtrailNode,
-    BrainzExplorerNodeType,
+    BrainzExplorerBreadtrailNode, BrainzExplorerNodeType,
     WidgetMusicBrainzExplorerBreadtrailService
 } from "../widget-music-brainz-explorer-breadtrail.service";
-import {BehaviorSubject, Observable, Subscription} from "rxjs";
-import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
-import {QueryUtilsService} from "../../../../../services/query-utils.service";
 import {BrainzQueryUtilsService} from "../../../services/brainz-query-utils.service";
-import {environment} from "../../../../../../zenvironments/environment";
-import {MatButtonModule} from "@angular/material/button";
+import {QueryUtilsService} from "../../../../../services/query-utils.service";
 import {UUID} from "angular2-uuid";
-
+import {CollectionViewer, DataSource} from "@angular/cdk/collections";
+import {BehaviorSubject, Observable, Subscription} from "rxjs";
+import {environment} from "../../../../../../zenvironments/environment";
 
 @Component({
-    selector: 'app-widget-music-brainz-list-artist',
-    standalone: true,
-    imports: [CommonModule, CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf, MatButtonModule],
-    templateUrl: './widget-music-brainz-list-artist.component.html',
-    styleUrls: ['./widget-music-brainz-list-artist.component.scss'],
+  selector: 'app-widget-music-brainz-list-release-group',
+  standalone: true,
+    imports: [CommonModule, CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport, MatButtonModule],
+  templateUrl: './widget-music-brainz-list-release-group.component.html',
+  styleUrls: ['./widget-music-brainz-list-release-group.component.scss']
 })
-export class WidgetMusicBrainzListArtistComponent implements OnChanges{
 
+export class WidgetMusicBrainzListReleaseGroupComponent {
 
     @Input() brainzExplorerBreadtrailNode: BrainzExplorerBreadtrailNode;
 
-    datasource: BrainzExplorerArtistDataSource<BrainzExplorerArtistRow>;
+    datasource: BrainzExplorerReleaseGroupDataSource<BrainzExplorerReleaseGroupRow>;
     resettingDatasource = false;  // needed for cdk bug.  https://github.com/angular/components/issues/22464
 
     constructor(private http: HttpClient,
@@ -38,9 +36,9 @@ export class WidgetMusicBrainzListArtistComponent implements OnChanges{
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-
+        console.log('ngOnChanges', changes);
         this.resettingDatasource = true;
-        this.datasource = new BrainzExplorerArtistDataSource<BrainzExplorerArtistRow>(
+        this.datasource = new BrainzExplorerReleaseGroupDataSource<BrainzExplorerReleaseGroupRow>(
             this.brainzExplorerBreadtrailNode,
             this.http,
             this.queryUtilsService,
@@ -48,16 +46,16 @@ export class WidgetMusicBrainzListArtistComponent implements OnChanges{
         );
         setTimeout( () => {
             this.resettingDatasource = false;
-            console.log('new breadnode list artist', this.brainzExplorerBreadtrailNode);
+            console.log('new breadnode list release_group', this.brainzExplorerBreadtrailNode);
         },1000) ;
 
     }
 
 
-    clickArtist(item){
+    clickReleaseGroup(item){
         console.log('item', item);
         const node = new BrainzExplorerBreadtrailNode();
-        node.brainzExplorerNodeType = BrainzExplorerNodeType.ListReleaseGroup;
+        node.brainzExplorerNodeType = BrainzExplorerNodeType.ListRelease;
         node.brainzId = item.id;
         node.label = item.name;
         node.uuid = UUID.UUID();
@@ -71,7 +69,7 @@ export class WidgetMusicBrainzListArtistComponent implements OnChanges{
 
 
 
-export class BrainzExplorerArtistDataSource<T> extends DataSource<T | undefined> {
+export class BrainzExplorerReleaseGroupDataSource<T> extends DataSource<T | undefined> {
     private _length = 1;
     private _pageSize = 25;
     private _cachedData = Array.from<T>({length: this._length});
@@ -132,26 +130,28 @@ export class BrainzExplorerArtistDataSource<T> extends DataSource<T | undefined>
     }
 
     private _fetchPage(page: number, initialize = false) {
+
         if (this._fetchedPages.has(page)) {
             return;
         }
         this._fetchedPages.add(page);
 
         const offset = this._pageSize * page;
-        const query = this.brainzQueryUtilsService.generateQueryForBreadTrailNode(this.brainzExplorerBreadtrailNode, offset, this._pageSize)
+        const query = this.brainzQueryUtilsService.generateQueryForBreadTrailNode(this.brainzExplorerBreadtrailNode, offset, this._pageSize);
+
         this.http.get(environment.BRAINZ_API + query, {responseType: 'json'}).subscribe( (data: any) =>{
 
             if (!this.initialized) {
                 this.initialize(data.count);
             }
 
-            const returnedLength = data.artists.length;
+            const returnedLength = data['release-groups'].length;
 
             this._cachedData.splice(
                 page * this._pageSize,
                 returnedLength,
-                ...data.artists as T[],
-                );
+                ...data['release-groups'] as T[],
+            );
 
             this._dataStream.next(this._cachedData);
 
@@ -186,7 +186,12 @@ export class BrainzExplorerArtistDataSource<T> extends DataSource<T | undefined>
 
 }
 
-export interface BrainzExplorerArtistRow {
+export interface BrainzExplorerReleaseGroupRow {
     id: string;
     name: string;
 }
+
+
+
+
+

@@ -56,7 +56,7 @@ export class BrainzQueryUtilsService {
                     queryParameters.push( {parameter: 'rgid', value:musicSearchXSM.album_id} );
                 }else{
                     if (musicSearchXSM.album_name) {
-                        queryParameters.push({parameter: 'release', value: musicSearchXSM.album_name});
+                        queryParameters.push({parameter: 'releasegroup', value: musicSearchXSM.album_name});
                     }
                 }
             }else{
@@ -97,7 +97,11 @@ export class BrainzQueryUtilsService {
                 }
 
                 if (musicSearchXSM.release_id){
-                    queryParameters.push( {parameter: 'reid', value:musicSearchXSM.album_id} );
+                    queryParameters.push( {parameter: 'reid', value:musicSearchXSM.release_id} );
+                }
+
+                if (musicSearchXSM.song_name){
+                    queryParameters.push( {parameter: 'recording', value:musicSearchXSM.song_name} );
                 }
 
             }else{

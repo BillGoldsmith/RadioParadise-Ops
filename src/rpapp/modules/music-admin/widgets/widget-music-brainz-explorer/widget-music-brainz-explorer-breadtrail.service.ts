@@ -72,7 +72,7 @@ export class WidgetMusicBrainzExplorerBreadtrailService {
             node.label = musicSearchXSM.command;
             node.brainzExplorerNodeType = BrainzExplorerNodeType.ListReleaseGroup;
             node.uuid = musicSearchXSM.uuid;
-            newBreadTrail.list_release = node;
+            newBreadTrail.list_release_group = node;
 
         }else if ( musicSearchXSM.command === MusicSearchCommands.searchSong ){
 

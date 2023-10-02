@@ -4,13 +4,13 @@
 
         <a>&nbsp;</a>
 
-        <ng-container *ngIf="brainzExplorerBreadtrail.list_release_group">
+        <ng-container *ngIf="brainzExplorerBreadtrail.list_release_group && brainzExplorerBreadtrail.list_artist">
             <div>
                 <a class="a-basic-link" (click)="widgetMusicBrainzExplorerBreadtrailService.trimBreadtrail(BrainzExplorerNodeType.ListArtist)" >{{brainzExplorerBreadtrail.list_release_group.label}}</a>
             </div>
         </ng-container>
 
-        <ng-container *ngIf="brainzExplorerBreadtrail.list_release">
+        <ng-container *ngIf="brainzExplorerBreadtrail.list_release && brainzExplorerBreadtrail.list_release_group ">
 
             <mat-icon *ngIf="brainzExplorerBreadtrail.list_release_group"
                 class="icon-size-5 text-secondary"
@@ -21,7 +21,7 @@
             </div>
         </ng-container>
 
-        <ng-container *ngIf="brainzExplorerBreadtrail.list_recording">
+        <ng-container *ngIf="brainzExplorerBreadtrail.list_recording && brainzExplorerBreadtrail.list_release">
 
             <mat-icon *ngIf="brainzExplorerBreadtrail.list_release"
                       class="icon-size-5 text-secondary"

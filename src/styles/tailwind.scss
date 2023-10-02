@@ -39,7 +39,7 @@ $sides: (top, bottom, left, right); // all positions
 }
 
 @layer components {
-    .a-explorer-link {
-        @apply text-white;
+    .a-basic-link {
+        @apply text-primary-500  hover:opacity-80 cursor-pointer;
     }
 }

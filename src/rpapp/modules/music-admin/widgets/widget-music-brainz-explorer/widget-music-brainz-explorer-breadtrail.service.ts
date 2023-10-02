@@ -23,15 +23,15 @@ export class WidgetMusicBrainzExplorerBreadtrailService {
         return this.brainzExplorerBreadtrail;
     }
 
-    trimBreadtrail(node: BrainzExplorerBreadtrailNode ): BrainzExplorerBreadtrail{
-        if (node.brainzExplorerNodeType === BrainzExplorerNodeType.ListArtist ){
+    trimBreadtrail(nodeType: BrainzExplorerNodeType ): BrainzExplorerBreadtrail{
+        if (nodeType === BrainzExplorerNodeType.ListArtist ){
             this.brainzExplorerBreadtrail.list_release_group = null;
             this.brainzExplorerBreadtrail.list_release = null;
             this.brainzExplorerBreadtrail.list_recording = null;
-        }else if (node.brainzExplorerNodeType === BrainzExplorerNodeType.ListReleaseGroup ){
+        }else if (nodeType === BrainzExplorerNodeType.ListReleaseGroup ){
             this.brainzExplorerBreadtrail.list_release = null;
             this.brainzExplorerBreadtrail.list_recording = null;
-        }else if (node.brainzExplorerNodeType === BrainzExplorerNodeType.ListRelease ){
+        }else if (nodeType === BrainzExplorerNodeType.ListRelease ){
             this.brainzExplorerBreadtrail.list_recording = null;
         }
         return this.brainzExplorerBreadtrail;

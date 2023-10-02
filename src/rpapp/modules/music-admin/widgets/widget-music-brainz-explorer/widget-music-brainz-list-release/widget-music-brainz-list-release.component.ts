@@ -57,7 +57,7 @@ export class WidgetMusicBrainzListReleaseComponent implements OnChanges{
         const node = new BrainzExplorerBreadtrailNode();
         node.brainzExplorerNodeType = BrainzExplorerNodeType.ListRecording;
         node.brainzId = item.id;
-        node.label = item.name;
+        node.label = item.title;
         node.uuid = UUID.UUID();
         this.widgetMusicBrainzExplorerBreadtrailService.applyNode(node)
     }

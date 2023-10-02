@@ -1,0 +1,37 @@
+<div>
+
+    <div class="hidden sm:flex flex-wrap items-center font-medium">
+
+        <a>&nbsp;</a>
+
+        <ng-container *ngIf="brainzExplorerBreadtrail.list_release_group">
+            <div>
+                <a class="a-basic-link" (click)="widgetMusicBrainzExplorerBreadtrailService.trimBreadtrail(BrainzExplorerNodeType.ListArtist)" >{{brainzExplorerBreadtrail.list_release_group.label}}</a>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="brainzExplorerBreadtrail.list_release">
+
+            <mat-icon *ngIf="brainzExplorerBreadtrail.list_release_group"
+                class="icon-size-5 text-secondary"
+                [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+
+            <div>
+                <a class="a-basic-link" (click)="widgetMusicBrainzExplorerBreadtrailService.trimBreadtrail(BrainzExplorerNodeType.ListReleaseGroup)">{{brainzExplorerBreadtrail.list_release.label}}</a>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="brainzExplorerBreadtrail.list_recording">
+
+            <mat-icon *ngIf="brainzExplorerBreadtrail.list_release"
+                      class="icon-size-5 text-secondary"
+                      [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+
+            <div>
+                <a class="a-basic-link" (click)="widgetMusicBrainzExplorerBreadtrailService.trimBreadtrail(BrainzExplorerNodeType.ListRelease)">{{brainzExplorerBreadtrail.list_recording.label}}</a>
+            </div>
+        </ng-container>
+
+
+    </div>
+</div>

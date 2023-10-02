@@ -1,15 +1,14 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import {MatButtonModule} from "@angular/material/button";
 import {
-    BrainzExplorerBreadtrailNode, BrainzExplorerNodeType,
+    BrainzExplorerBreadtrailNode,
     WidgetMusicBrainzExplorerBreadtrailService
 } from "../widget-music-brainz-explorer-breadtrail.service";
 import {HttpClient} from "@angular/common/http";
 import {BrainzQueryUtilsService} from "../../../services/brainz-query-utils.service";
 import {QueryUtilsService} from "../../../../../services/query-utils.service";
-import {UUID} from "angular2-uuid";
 import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject, Observable, Subscription} from "rxjs";
 import {environment} from "../../../../../../zenvironments/environment";

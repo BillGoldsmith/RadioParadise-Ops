@@ -16,11 +16,14 @@ import {
 import {
     WidgetMusicBrainzListReleaseComponent
 } from "./widget-music-brainz-list-release/widget-music-brainz-list-release.component";
+import {
+    WidgetMusicBrainzListRecordingComponent
+} from "./widget-music-brainz-list-recording/widget-music-brainz-list-recording.component";
 
 @Component({
   selector: 'app-widget-music-brainz-explorer',
   standalone: true,
-    imports: [CommonModule, WidgetMusicBrainzListArtistComponent, WidgetMusicBrainzListReleaseGroupComponent, WidgetMusicBrainzListReleaseComponent],
+    imports: [CommonModule, WidgetMusicBrainzListArtistComponent, WidgetMusicBrainzListReleaseGroupComponent, WidgetMusicBrainzListReleaseComponent, WidgetMusicBrainzListRecordingComponent],
   templateUrl: './widget-music-brainz-explorer.component.html',
   styleUrls: ['./widget-music-brainz-explorer.component.scss']
 })

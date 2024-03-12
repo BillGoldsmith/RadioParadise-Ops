@@ -8,7 +8,7 @@ mkdir zips  || { printf "\n error creating zips folder \n" && exit 1; }
 ( cd dist; zip -rq ../zips/dist ./  )
 
 curl --location --request PUT 'https://canonical.radioparadise.com/nc/replace-release/pre-ops.radioparadise.com' \
---header 'nc-token: 9d86ffda-2dd3-4aa9-b03f-8ed488249d76' \
+--header 'nc-token: 7725b6e4-613f-11ee-bc25-4b941216b4e1' \
 --form 'releasezip=@"zips/dist.zip"' || { printf "\n error uploading zip \n" && exit 1; }
 
 

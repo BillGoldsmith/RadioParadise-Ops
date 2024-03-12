@@ -113,7 +113,7 @@ export class PlaylistsTestScheduledPromosComponent implements OnInit, OnDestroy 
                 this.bitratesP.forEach( bitrate => {
                     window.setTimeout(() => {
                         if (!this.destroyed) {
-                            //this.testPromos(channel, bitrate, data['data'].activeIds);
+                            this.testPromos(channel, bitrate, data['data'].activeIds);
                             //this.testVoice(channel, bitrate, data['data'].activeIds);
                         }
                     }, timeout);

@@ -90,6 +90,22 @@ export class ServersBandwidthComponent {
             mrtg_namespace: 'localhost_enp1s0f0',
         },
         {
+            subdomain: 'server-20',
+            tags: ['misc'],
+            links: [],
+            datacenter: 'SLC',
+            bandwidth: '1Gb/s',
+            mrtg_namespace: 'localhost_enp130s0',
+        },
+        {
+            subdomain: 'server-21',
+            tags: ['staging'],
+            links: [],
+            datacenter: 'SLC',
+            bandwidth: '10Gb/s 330TB/M',
+            mrtg_namespace: 'localhost_enp130s0',
+        },
+        {
             subdomain: 'api',
             tags: [],
             links: [

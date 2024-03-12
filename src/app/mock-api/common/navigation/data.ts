@@ -19,6 +19,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Stream Sync',
                 type : 'basic',
                 link : '/monitor/stream-sync-status'
+            },
+            {
+                id   : 'server-health',
+                title: 'Server Health',
+                type : 'basic',
+                link : '/monitor/server-health'
             }
         ]
     },

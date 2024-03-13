@@ -95,7 +95,7 @@ export class ServersBandwidthComponent {
             links: [],
             datacenter: 'SLC',
             bandwidth: '1Gb/s',
-            mrtg_namespace: 'localhost_enp130s0',
+            mrtg_namespace: 'localhost_eno4',
         },
         {
             subdomain: 'server-21',

@@ -106,18 +106,6 @@ export class ServersBandwidthComponent {
             mrtg_namespace: 'localhost_enp130s0',
         },
         {
-            subdomain: 'api',
-            tags: [],
-            links: [
-                {'label': 'apache', 'url': 'https://api.radioparadise.com/server-status-xny387reds22?refresh=5'},
-                {'label': 'php', 'url': 'https://api.radioparadise.com/realtime-status-xny387reds22'},
-                {'label': 'php-docs', 'url': 'http://www.idc-online.com/technical_references/pdfs/information_technology/Understanding_the_PHP_FPM_status_page.pdf'},
-            ],
-            datacenter: 'us-west-2',
-            bandwidth: '',
-            mrtg_namespace: 'localhost_ens5',
-        },
-        {
             subdomain: 'legacy',
             tags: [],
             links: [
@@ -134,6 +122,22 @@ export class ServersBandwidthComponent {
             datacenter: ['us-west-2'],
             bandwidth: '',
             mrtg_namespace: 'localhost_eth0',
+        },
+        {
+            subdomain: 'ec2-api',
+            tags: [],
+            links: [],
+            datacenter: ['us-west-2'],
+            bandwidth: '',
+            mrtg_namespace: 'localhost_ens5',
+        },
+        {
+            subdomain: 'ec2-api-fallback',
+            tags: [],
+            links: [],
+            datacenter: ['us-west-2'],
+            bandwidth: '',
+            mrtg_namespace: 'localhost_ens5',
         },
 
     ]

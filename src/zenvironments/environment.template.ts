@@ -47,6 +47,7 @@ export const environment = {
   RPSERVER_SITEAPI: (partials.API_SERVER + 'siteapi.php'),
   RPSERVER_ADMINSITEAPI: (partials.ADMIN_SERVER + 'siteapi.php'),
   RPSERVER_API: (partials.API_SERVER + 'api/'),
+  RPSERVER_OPI: (partials.API_SERVER + 'opi/'),
   RPSERVER_ROOT: (partials.API_SERVER),
 
   RPSERVER_CACHE_API: (partials.CACHE_API_SERVER),

@@ -131,6 +131,50 @@ export const defaultNavigation: FuseNavigationItem[] = [
             }
         ]
     },
+    {
+        id   : 'reports',
+        title: 'Reports',
+        type : 'aside',
+        icon : 'heroicons_outline:presentation-chart-line',
+        children: [
+            {
+                id   : 'clients',
+                title: 'Clients',
+                type : 'basic',
+                link : '/reports/clients'
+            },
+            {
+                id   : 'channels clients',
+                title: 'Channels Clients',
+                type : 'basic',
+                link : '/reports/channels-clients'
+            },
+            {
+                id   : 'channels streams',
+                title: 'Channels Streams',
+                type : 'basic',
+                link : '/reports/channels-streams'
+            },
+            {
+                id   : 'accounts-active',
+                title: 'Accounts Active',
+                type : 'basic',
+                link : '/reports/accounts-active'
+            },
+            {
+                id   : 'accounts-recent',
+                title: 'Accounts Recent',
+                type : 'basic',
+                link : '/reports/accounts-recent'
+            },
+            {
+                id   : 'automotive-languages',
+                title: 'Automotive Languages',
+                type : 'basic',
+                link : '/reports/automotive-languages'
+            }
+        ]
+    },
 
 
 ];

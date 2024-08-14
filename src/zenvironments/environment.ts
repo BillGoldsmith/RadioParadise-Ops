@@ -6,7 +6,7 @@
 const partials = {
 
   //API_SERVER: 'http://localdev.radioparadise.com:86/',
-  API_SERVER: 'https://api2.radioparadise.com/',
+  API_SERVER: 'https://api.radioparadise.com/',
 
   IMAGE_SERVER: 'https://img.radioparadise.com/',
 
@@ -47,6 +47,7 @@ export const environment = {
   RPSERVER_SITEAPI: (partials.API_SERVER + 'siteapi.php'),
   RPSERVER_ADMINSITEAPI: (partials.ADMIN_SERVER + 'siteapi.php'),
   RPSERVER_API: (partials.API_SERVER + 'api/'),
+  RPSERVER_OPI: (partials.API_SERVER + 'opi/'),
   RPSERVER_ROOT: (partials.API_SERVER),
 
   RPSERVER_CACHE_API: (partials.CACHE_API_SERVER),

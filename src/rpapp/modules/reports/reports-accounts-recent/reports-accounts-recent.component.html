@@ -1,0 +1,22 @@
+<div class="prose" *ngIf="pageData">
+
+    <table>
+        <thead>
+            <td>email</td>
+            <td>username</td>
+            <td>real name</td>
+            <td>minutes ago</td>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of pageData">
+                <td><a href="mailto:{{row.email}}">{{row.email}}</a></td>
+                <td>{{row.username}}</td>
+                <td>{{row.real_name}}</td>
+                <td>{{row.round}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>

@@ -1,0 +1,13 @@
+<div class="overflow-x-scroll">
+
+    <table>
+        <thead>
+        <td>&nbsp;</td><td *ngFor="let header of pageData.header">{{header}}</td>
+        </thead>
+        <tr *ngFor="let row of pageData.rows">
+            <td>{{row.report_date}}</td><td *ngFor="let count of row.report_counts">{{count}}</td>
+        </tr>
+
+    </table>
+
+</div>

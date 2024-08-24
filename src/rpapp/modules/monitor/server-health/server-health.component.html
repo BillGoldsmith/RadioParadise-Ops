@@ -5,10 +5,10 @@
             <ng-container *ngFor="let server of pageData">
                 <div class="mt-2 text-lg">{{server.server_name}} </div>
                 <div  class="mat-app-background p-2">
-
-                    <code [innerHTML]="server.server_data.disk_data " class="whitespace-pre">
-
-                    </code>
+                    <code *ngIf="server.server_data.timestamp" [innerHTML]="'refreshed: ' + server.server_data.refreshed + ' ago \n'" class="whitespace-pre"></code>
+                    <code *ngIf="server.server_data.uptime" [innerHTML]="server.server_data.uptime " class="whitespace-pre"></code>
+                    <code *ngIf="server.server_data.cores" [innerHTML]="server.server_data.cores " class="whitespace-pre"></code>
+                    <code [innerHTML]="server.server_data.disk_data " class="whitespace-pre"></code>
 
                 </div>
 

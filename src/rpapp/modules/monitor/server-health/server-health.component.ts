@@ -21,8 +21,8 @@ export class ServerHealthComponent implements OnInit {
 
         this.http.get(environment.RPSERVER_API + 'server_health_report', {responseType: 'json', withCredentials: true})
             .subscribe(data => {
-                console.log(data)
-                this.pageData = data;
+
+                this.pageData = this.decorateData(data);
             });
 
     }
@@ -31,5 +31,33 @@ export class ServerHealthComponent implements OnInit {
 
     }
 
+    decorateData(data){
+        console.log('decorateData',data);
+        data.forEach(server =>{
+           if (server.server_data.timestamp){
+               server.server_data.refreshed = this.secToTime( (Date.now() / 1000) - server.server_data.timestamp );
+           }
+            console.log('decoratedData',(Date.now() / 1000) - server.server_data.timestamp);
+        });
+
+        return data;
+    }
+
+    secToTime(input_seconds) {
+        let ms = input_seconds * 1000;
+        let seconds = (ms / 1000).toFixed(1);
+        let minutes = (ms / (1000 * 60)).toFixed(1);
+        let hours = (ms / (1000 * 60 * 60)).toFixed(1);
+        let days = (ms / (1000 * 60 * 60 * 24)).toFixed(1);
+        // @ts-ignore
+        if (seconds < 60) return seconds + " Sec";
+        else { // @ts-ignore
+            if (minutes < 60) return minutes + " Min";
+            else { // @ts-ignore
+                if (hours < 24) return hours + " Hrs";
+                else return days + " Days"
+            }
+        }
+    }
 
 }

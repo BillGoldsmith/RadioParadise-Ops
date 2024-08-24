@@ -1,0 +1,22 @@
+<div class="prose" *ngIf="pageData">
+    <ng-container *ngFor="let cr of pageData.chans">
+    <h3>Chan {{cr.chan}}</h3>
+    <table>
+        <thead>
+        <td>block id</td><td>status</td><td>start</td><td>finish</td><td>duration</td><td>pkey</td>
+        </thead>
+        <tr *ngFor="let row of cr.rows">
+            <td>{{row.block_id}}</td>
+            <td>{{row.status}}</td>
+            <td>{{row.start_diff}}</td>
+            <td>{{row.finish_diff}}</td>
+            <td>{{row.duration}}</td>
+            <td>{{row.pkey}}</td>
+        </tr>
+    </table>
+
+
+    </ng-container>
+
+
+</div>

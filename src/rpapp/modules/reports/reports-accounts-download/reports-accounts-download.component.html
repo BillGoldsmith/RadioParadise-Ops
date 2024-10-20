@@ -1,0 +1,35 @@
+<div class="w-screen">
+
+
+    <form [formGroup]="range">
+    <div>
+    <mat-form-field class="w-60">
+        <mat-label>Start date</mat-label>
+        <input matInput formControlName="date_start" [matDatepicker]="startpicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="startpicker"></mat-datepicker-toggle>
+        <mat-datepicker #startpicker></mat-datepicker>
+    </mat-form-field>
+    </div>
+
+    <div class="pmt-20">
+    <mat-form-field class="w-60">
+        <mat-label>End date ( leave blank for NOW )</mat-label>
+        <input matInput formControlName="date_end" [matDatepicker]="endpicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="endpicker"></mat-datepicker-toggle>
+        <mat-datepicker #endpicker></mat-datepicker>
+    </mat-form-field>
+    </div>
+
+
+    <div class="pmt-20">
+        <button (click)="submitForm()" color="primary" mat-raised-button [disabled]="loading">
+            Download as CSV
+        </button>
+    </div>
+
+    </form>
+
+</div>
+

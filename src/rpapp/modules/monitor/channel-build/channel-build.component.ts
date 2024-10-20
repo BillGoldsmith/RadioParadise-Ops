@@ -41,6 +41,7 @@ export class ChannelBuildComponent {
                row.start_diff = this.secToTime( now - row.start)
                 row.finish_diff = this.secToTime( now - row.finish)
                 row.duration = this.secToTime( row.finish - row.start)
+                row.sched_minus_finish = this.secToTime( row.sched_minus_finish )
                 console.log ('times', now, row.start)
             });
         });

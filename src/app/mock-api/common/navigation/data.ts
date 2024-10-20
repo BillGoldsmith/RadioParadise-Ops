@@ -174,6 +174,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/reports/accounts-recent'
             },
             {
+                id   : 'accounts-download',
+                title: 'Accounts Download',
+                type : 'basic',
+                link : '/reports/accounts-download'
+            },
+            {
                 id   : 'automotive-languages',
                 title: 'Automotive Languages',
                 type : 'basic',

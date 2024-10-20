@@ -7,6 +7,7 @@ import {
 import {ReportsAccountsActiveComponent} from "./reports-accounts-active/reports-accounts-active.component";
 import {ReportsChannelsClientsComponent} from "./reports-channels-clients/reports-channels-clients.component";
 import {ReportsChannelsStreamsComponent} from "./reports-channels-streams/reports-channels-streams.component";
+import {ReportsAccountsDownloadComponent} from "./reports-accounts-download/reports-accounts-download.component";
 
 
 
@@ -35,6 +36,11 @@ export default [
         path     : 'accounts-recent',
         component: ReportsAccountsRecentComponent,
         data: {title: 'Report Accounts Recent'}
+    },
+    {
+        path     : 'accounts-download',
+        component: ReportsAccountsDownloadComponent,
+        data: {title: 'Report Accounts Download'}
     },
     {
         path     : 'automotive-languages',

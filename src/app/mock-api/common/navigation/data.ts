@@ -184,6 +184,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Automotive Languages',
                 type : 'basic',
                 link : '/reports/automotive-languages'
+            },
+            {
+                id   : 'songs-new-releases',
+                title: 'Songs New Releases',
+                type : 'basic',
+                link : '/reports/songs-new-releases'
             }
         ]
     },

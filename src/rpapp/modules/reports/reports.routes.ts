@@ -8,6 +8,7 @@ import {ReportsAccountsActiveComponent} from "./reports-accounts-active/reports-
 import {ReportsChannelsClientsComponent} from "./reports-channels-clients/reports-channels-clients.component";
 import {ReportsChannelsStreamsComponent} from "./reports-channels-streams/reports-channels-streams.component";
 import {ReportsAccountsDownloadComponent} from "./reports-accounts-download/reports-accounts-download.component";
+import {ReportsSongsNewReleasesComponent} from "./reports-songs-new-releases/reports-songs-new-releases.component";
 
 
 
@@ -46,6 +47,11 @@ export default [
         path     : 'automotive-languages',
         component: ReportsAutomotiveLanguagesComponent,
         data: {title: 'Report Automotive Languages'}
+    },
+    {
+        path     : 'songs-new-releases',
+        component: ReportsSongsNewReleasesComponent,
+        data: {title: 'Report Songs (new releases)'}
     },
 
 ] as Routes;

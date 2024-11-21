@@ -90,6 +90,14 @@ export class ServersBandwidthComponent {
             mrtg_namespace: 'localhost_enp1s0f0',
         },
         {
+            subdomain: 'server-14',
+            tags: ['web', 'stream', 'audio-edge'],
+            links: [],
+            datacenter: 'SEA',
+            bandwidth: '100TB',
+            mrtg_namespace: 'localhost_bond0',
+        },
+        {
             subdomain: 'server-20',
             tags: ['misc'],
             links: [],

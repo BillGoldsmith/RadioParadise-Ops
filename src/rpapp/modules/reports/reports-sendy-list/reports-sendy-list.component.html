@@ -1,0 +1,27 @@
+<div class="w-screen">
+
+    <p>
+        This will download an up to date mailing list from the master database.
+        It should be imported to the existing mailing list  "Listeners".
+
+        Click download link below.
+        Open Sendy link below.  Select choose file and then click import.
+
+        <a target="_blank" href="https://newsletter.radioparadise.com/update-list?i=1&l=2">https://newsletter.radioparadise.com/update-list?i=1&l=2</a>
+
+        Import will take awhile to finish.
+        And when completed,  any segments will need to be manually refreshed.
+
+        Eventually we'll be able to automate the above.
+
+    </p>
+
+    <div class="pmt-20">
+        <button (click)="submitForm()" color="primary" mat-raised-button [disabled]="loading">
+            Download as CSV
+        </button>
+    </div>
+
+
+</div>
+

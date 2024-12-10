@@ -9,6 +9,7 @@ import {ReportsChannelsClientsComponent} from "./reports-channels-clients/report
 import {ReportsChannelsStreamsComponent} from "./reports-channels-streams/reports-channels-streams.component";
 import {ReportsAccountsDownloadComponent} from "./reports-accounts-download/reports-accounts-download.component";
 import {ReportsSongsNewReleasesComponent} from "./reports-songs-new-releases/reports-songs-new-releases.component";
+import {ReportsSendyListComponent} from "./reports-sendy-list/reports-sendy-list.component";
 
 
 
@@ -52,6 +53,11 @@ export default [
         path     : 'songs-new-releases',
         component: ReportsSongsNewReleasesComponent,
         data: {title: 'Report Songs (new releases)'}
+    },
+    {
+        path     : 'sendy-list',
+        component: ReportsSendyListComponent,
+        data: {title: 'Report Sendy List'}
     },
 
 ] as Routes;

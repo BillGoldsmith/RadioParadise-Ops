@@ -190,6 +190,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Songs New Releases',
                 type : 'basic',
                 link : '/reports/songs-new-releases'
+            },
+            {
+                id   : 'sendy-list',
+                title: 'Sendy list',
+                type : 'basic',
+                link : '/reports/sendy-list'
             }
         ]
     },

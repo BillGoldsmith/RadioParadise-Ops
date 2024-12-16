@@ -31,6 +31,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Channel Build',
                 type : 'basic',
                 link : '/monitor/channel-build'
+            },
+            {
+                id   : 'service-health',
+                title: 'Service health',
+                type : 'basic',
+                link : '/monitor/service-health'
             }
         ]
     },

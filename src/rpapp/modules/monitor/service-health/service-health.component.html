@@ -1,0 +1,33 @@
+<div class="prose">
+    <h4>Website</h4>
+    <table *ngIf="statusWebsite">
+        <thead>
+        <td></td>
+        <td>static</td>
+        <td>dynamic</td>
+        </thead>
+        <tr *ngFor="let server of statusWebsite.servers">
+            <td>{{ server.name }}</td>
+            <td *ngFor="let test of server.tests">
+                <app-status-tag [status]="test.code"></app-status-tag>
+            </td>
+        </tr>
+    </table>
+
+
+    <h4>Audio Files</h4>
+    <table *ngIf="statusAudioFile">
+        <thead>
+        <td></td>
+        <td></td>
+        </thead>
+        <tr *ngFor="let server of statusAudioFile.servers">
+            <td>{{ server.name }}</td>
+            <td>
+                <app-status-tag [status]="server.status_code"></app-status-tag>
+            </td>
+        </tr>
+    </table>
+
+
+</div>

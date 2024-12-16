@@ -3,6 +3,7 @@ import {ServersBandwidthComponent} from "./bandwidth/servers-bandwidth.component
 import {StreamSyncStatusComponent} from "./stream-sync-status/stream-sync-status.component";
 import {ServerHealthComponent} from "./server-health/server-health.component";
 import {ChannelBuildComponent} from "./channel-build/channel-build.component";
+import {ServiceHealthComponent} from "./service-health/service-health.component";
 
 export default [
     {
@@ -24,5 +25,10 @@ export default [
         path     : 'channel-build',
         component: ChannelBuildComponent,
         data: {title: 'Channel Build'}
+    },
+    {
+        path     : 'service-health',
+        component: ServiceHealthComponent,
+        data: {title: 'Service Health'}
     },
 ] as Routes;

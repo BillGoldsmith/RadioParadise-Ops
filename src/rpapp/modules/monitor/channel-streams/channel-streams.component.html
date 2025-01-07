@@ -1,0 +1,31 @@
+<div class="prose" *ngIf="pageData">
+
+    <ng-container *ngFor="let server of pageData">
+        <h2><a target="rp_stream_server"
+               [href]="'https://' + server.serverId + '.radioparadise.com/status'">{{ server.serverId }}</a></h2>
+
+
+        <div class="ml-6">
+            <table>
+                <tr class="border">
+                    <th></th>
+                    <th class="p-1 pl-2">event</th>
+                    <th class="p-1 pl-2">time</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let encoder of server.encoders">
+                    <td class="p-1">{{encoder.encoderName}}</td>
+                    <td class="p-1 pl-2">{{encoder.status.delta_event}}</td>
+                    <td class="p-1 pl-2">{{encoder.status.delta_play_time}}</td>
+                    <td class="p-1">
+                        <a class="pl-1 cursor-pointer" (click)="clickSync(server.serverId, encoder)" >Sync</a>
+                        <a class="pl-3 cursor-pointer" (click)="clickRestart(server.serverId, encoder)" >Restart</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </ng-container>
+
+
+</div>

@@ -4,6 +4,8 @@ import {StreamSyncStatusComponent} from "./stream-sync-status/stream-sync-status
 import {ServerHealthComponent} from "./server-health/server-health.component";
 import {ChannelBuildComponent} from "./channel-build/channel-build.component";
 import {ServiceHealthComponent} from "./service-health/service-health.component";
+import {ChannelStatusComponent} from "./channel-status/channel-status.component";
+import {ChannelStreamsComponent} from "./channel-streams/channel-streams.component";
 
 export default [
     {
@@ -22,13 +24,23 @@ export default [
         data: {title: 'Server Health'}
     },
     {
-        path     : 'channel-build',
+        path     : 'service-health',
+        component: ServiceHealthComponent,
+        data: {title: 'Service Health'}
+    },
+    {
+        path     : 'channel/build',
         component: ChannelBuildComponent,
         data: {title: 'Channel Build'}
     },
     {
-        path     : 'service-health',
-        component: ServiceHealthComponent,
-        data: {title: 'Service Health'}
+        path     : 'channel/status',
+        component: ChannelStatusComponent,
+        data: {title: 'Channel Status'}
+    },
+    {
+        path     : 'channel/streams',
+        component: ChannelStreamsComponent,
+        data: {title: 'Channel Streams'}
     },
 ] as Routes;

@@ -27,16 +27,36 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/monitor/server-health'
             },
             {
-                id   : 'channel-build',
-                title: 'Channel Build',
-                type : 'basic',
-                link : '/monitor/channel-build'
-            },
-            {
                 id   : 'service-health',
                 title: 'Service health',
                 type : 'basic',
                 link : '/monitor/service-health'
+            },
+            {
+                id   : 'channel',
+                title: 'Channel',
+                type : 'collapsable',
+                icon : 'heroicons_outline:swatch',
+                children: [
+                    {
+                        id   : 'channel-build',
+                        title: 'Channel Build',
+                        type : 'basic',
+                        link : '/monitor/channel/build'
+                    },
+                    {
+                        id   : 'channel-status',
+                        title: 'Channel Status',
+                        type : 'basic',
+                        link : '/monitor/channel/status'
+                    },
+                    {
+                        id   : 'channel-streams',
+                        title: 'Channel Streams',
+                        type : 'basic',
+                        link : '/monitor/channel/streams'
+                    }
+                ]
             }
         ]
     },

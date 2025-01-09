@@ -1,1 +1,49 @@
-<p>channel-status works!</p>
+<div class="prose" *ngIf="pageData">
+
+    <p>
+        The delta value is the difference in seconds between the master stream history (rp_history) and the scheduled play time
+        according to playlist_x_active.  This is recalculated every 30 minutes on the half hour.
+    </p>
+
+    <p>
+        Last refresh was {{pageData.statsRefresh}} seconds ago.  If over 1000 there might be a problem with admin server.
+    </p>
+
+
+    <ng-container *ngFor="let channel of pageData.channels">
+        <h2>Channel: {{channel.chan}}</h2>
+        <table>
+            <tr>
+                <td>event:</td>
+                <td>{{channel.current_event}}</td>
+            </tr>
+
+            <tr>
+                <td>delta:</td>
+                <td>{{channel.delta}}</td>
+            </tr>
+
+            <tr>
+                <td>master:</td>
+                <td>{{channel.master}}</td>
+            </tr>
+
+            <tr>
+                <td>listeners:</td>
+                <td>{{channel.listeners}}</td>
+            </tr>
+
+            <tr>
+                <td>max today:</td>
+                <td>{{channel.maxListenersToday}}</td>
+            </tr>
+
+        </table>
+
+    </ng-container>
+
+
+
+
+
+</div>

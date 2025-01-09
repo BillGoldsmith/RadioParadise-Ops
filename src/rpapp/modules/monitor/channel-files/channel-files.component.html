@@ -1,0 +1,32 @@
+<div class="prose" *ngIf="pageData">
+
+    <p>
+        Check for any missing files.  ( currently ignores bitrate 0 and 1 )
+    </p>
+
+
+    <ng-container *ngFor="let channel of pageData">
+        <h2>Channel: {{channel.chan}}</h2>
+
+        <div class="ml-6">
+            <h4>blocks:</h4>
+            <ng-container *ngFor="let block of channel.blocks">
+                {{block}}<br>
+            </ng-container>
+
+            <h4>promos:</h4>
+            <ng-container *ngFor="let promo of channel.promos">
+                {{promo}}<br>
+            </ng-container>
+
+            <h4>gapless:</h4>
+            <ng-container *ngFor="let gapless of channel.gapless">
+                {{gapless}}<br>
+            </ng-container>
+
+        </div>
+
+    </ng-container>
+
+
+</div>

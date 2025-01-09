@@ -55,6 +55,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         title: 'Channel Streams',
                         type : 'basic',
                         link : '/monitor/channel/streams'
+                    },
+                    {
+                        id   : 'channel-files',
+                        title: 'Channel Files',
+                        type : 'basic',
+                        link : '/monitor/channel/files'
                     }
                 ]
             }
@@ -72,32 +78,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 type : 'basic',
                 icon : 'heroicons_outline:arrow-path',
                 link : '/toolbox/cache-invalidation'
-            },
-            {
-                id   : 'playlists',
-                title: 'Playlists',
-                type : 'collapsable',
-                icon : 'heroicons_outline:table-cells',
-                children: [
-                    {
-                        id   : 'test-live',
-                        title: 'Test live',
-                        type : 'basic',
-                        link : '/toolbox/playlists/test-live'
-                    },
-                    {
-                        id   : 'test-cache-history',
-                        title: 'Test cache history',
-                        type : 'basic',
-                        link : '/toolbox/playlists/test-cache-history'
-                    },
-                    {
-                        id   : 'test-promos',
-                        title: 'Test scheduled promos',
-                        type : 'basic',
-                        link : '/toolbox/playlists/test-scheduled-promos'
-                    }
-                ]
             },
             {
                 id   : 'cover-art',

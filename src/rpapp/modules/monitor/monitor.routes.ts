@@ -6,6 +6,7 @@ import {ChannelBuildComponent} from "./channel-build/channel-build.component";
 import {ServiceHealthComponent} from "./service-health/service-health.component";
 import {ChannelStatusComponent} from "./channel-status/channel-status.component";
 import {ChannelStreamsComponent} from "./channel-streams/channel-streams.component";
+import {ChannelFilesComponent} from "./channel-files/channel-files.component";
 
 export default [
     {
@@ -42,5 +43,10 @@ export default [
         path     : 'channel/streams',
         component: ChannelStreamsComponent,
         data: {title: 'Channel Streams'}
+    },
+    {
+        path     : 'channel/files',
+        component: ChannelFilesComponent,
+        data: {title: 'Channel Files'}
     },
 ] as Routes;

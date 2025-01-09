@@ -39,9 +39,27 @@ export class ChannelStreamsComponent implements OnInit{
 
     clickSync(serverId, encoder){
 
+        let url = 'https://' + serverId + '.radioparadise.com:7006/sync/' + encoder.encoderName;
+        this.http.get( url, {withCredentials:true }).subscribe( (data) =>{
+            console.log('sync', url, data);
+        })
     }
 
     clickRestart(serverId,encoder) {
+
+        let url = 'https://' + serverId + '.radioparadise.com:7006/restart/' + encoder.encoderName;
+        this.http.get( url, {withCredentials:true }).subscribe( (data) =>{
+            console.log('sync', url, data);
+        })
+
+    }
+
+    clickSkip(serverId,encoder) {
+
+        let url = 'https://' + serverId + '.radioparadise.com:7006/skip/' + encoder.encoderName;
+        this.http.get( url, {withCredentials:true }).subscribe( (data) =>{
+            console.log('sync', url, data);
+        })
 
     }
 

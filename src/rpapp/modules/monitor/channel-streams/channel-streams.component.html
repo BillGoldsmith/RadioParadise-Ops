@@ -1,5 +1,19 @@
 <div class="prose" *ngIf="pageData">
 
+    <p>
+        Temp testing notes:  Skip is just for testing.  Currently only server-21 is running the new build and responds to commands.
+    </p>
+
+    <p>
+        Time, is the delta between the encoder and the master encoder in seconds.  Should be close to zero.
+        Event is the number of events different, 0, 1 or 2 is fine when time is still in sync. 4 or higher may mean it has stopped or is having issues reaching api.
+        Time and event of 999 means no records available.  *** is for master encoders ( write to rp_history table )
+    </p>
+
+    <p>
+        Restart will kick people off the channel, and is for when a config change is made or starting a new channel.
+    </p>
+
     <ng-container *ngFor="let server of pageData">
         <h2><a target="rp_stream_server"
                [href]="'https://' + server.serverId + '.radioparadise.com/status'">{{ server.serverId }}</a></h2>
@@ -14,12 +28,13 @@
                     <th></th>
                 </tr>
                 <tr *ngFor="let encoder of server.encoders">
-                    <td class="p-1">{{encoder.encoderName}}</td>
+                    <td class="p-1">{{encoder.encoderName}}<ng-container *ngIf="encoder.status.master"> ***</ng-container></td>
                     <td class="p-1 pl-2">{{encoder.status.delta_event}}</td>
                     <td class="p-1 pl-2">{{encoder.status.delta_play_time}}</td>
                     <td class="p-1">
                         <a class="pl-1 cursor-pointer" (click)="clickSync(server.serverId, encoder)" >Sync</a>
                         <a class="pl-3 cursor-pointer" (click)="clickRestart(server.serverId, encoder)" >Restart</a>
+                        <a class="pl-3 cursor-pointer" (click)="clickSkip(server.serverId, encoder)" >Skip</a>
                     </td>
                 </tr>
             </table>

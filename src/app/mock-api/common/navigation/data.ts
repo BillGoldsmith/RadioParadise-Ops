@@ -205,6 +205,21 @@ export const defaultNavigation: FuseNavigationItem[] = [
             }
         ]
     },
+    {
+        id   : 'labratory',
+        title: 'Lab',
+        type : 'aside',
+        icon : 'heroicons_outline:beaker',
+        children: [
+            {
+                id   : 'test-flex',
+                title: 'Test Flex',
+                type : 'basic',
+                icon : 'heroicons_outline:cog',
+                link : '/laboratory/test-flex'
+            }
+        ]
+    },
 
 
 ];

@@ -39,6 +39,7 @@ export const appRoutes: Route[] = [
             {path: 'accounts', component: AccountsContainerComponent, loadChildren: () => import('rpapp/modules/accounts/accounts.routes')},
             {path: 'music', component: MusicAdminContainerComponent, loadChildren: () => import('rpapp/modules/music-admin/music-admin.routes')},
             {path: 'reports', component: ToolboxContainerComponent, loadChildren: () => import('rpapp/modules/reports/reports.routes')},
+            {path: 'laboratory', component: ToolboxContainerComponent, loadChildren: () => import('rpapp/modules/laboratory/laboratory.routes')},
 
         ]
     }

@@ -45,9 +45,9 @@ export class ServersBandwidthComponent {
             subdomain: 'server-6',
             tags: ['web', 'stream', 'shoutcast', 'audio-nomp3'],
             links: [],
-            datacenter: 'DLS',
-            bandwidth: 'bonded 2gb/s',
-            mrtg_namespace: 'localhost_bond0',
+            datacenter: 'SLC',
+            bandwidth: '660TB/m',
+            mrtg_namespace: 'localhost_enp9s0f1np1',
         },
         {
             subdomain: 'server-8',

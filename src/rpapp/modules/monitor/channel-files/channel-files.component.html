@@ -8,6 +8,7 @@
     <ng-container *ngFor="let channel of pageData">
         <h2>Channel: {{channel.chan}}</h2>
 
+        <ng-container *ngIf="channel.chan != 99">
         <div class="ml-6">
             <h4>blocks:</h4>
             <ng-container *ngFor="let block of channel.blocks">
@@ -25,8 +26,32 @@
             </ng-container>
 
         </div>
+        </ng-container>
+
+        <ng-container *ngIf="channel.chan == 99">
+            <div class="ml-6">
+                <h4>master:</h4>
+                <ng-container *ngFor="let master of channel.master">
+                    {{master}}<br>
+                </ng-container>
+
+                <h4>flac:</h4>
+                <ng-container *ngFor="let flac of channel.flac">
+                    {{flac}}<br>
+                </ng-container>
+
+                <h4>audio:</h4>
+                <ng-container *ngFor="let audio of channel.audio">
+                    {{audio}}<br>
+                </ng-container>
+
+            </div>
+        </ng-container>
+
 
     </ng-container>
+
+
 
 
 </div>

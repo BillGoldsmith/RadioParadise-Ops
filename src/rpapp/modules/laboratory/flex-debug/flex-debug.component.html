@@ -1,0 +1,18 @@
+<div class="prose">
+
+    <div>
+    <button mat-raised-button color="primary" (click)="clickRefreshNodeList()">refresh node list</button>
+        <ng-container *ngIf="nodeList">
+          <andypf-json-viewer data={{nodeList}}></andypf-json-viewer>
+        </ng-container>
+    </div>
+
+    <div>
+    <button mat-raised-button color="primary"  (click)="clickRefreshLeafList()">refresh leaf list</button>
+    </div>
+
+    <div>
+    <button mat-raised-button color="primary"  (click)="clickRefreshTreeList()">refresh tree list</button>
+    </div>
+
+</div>

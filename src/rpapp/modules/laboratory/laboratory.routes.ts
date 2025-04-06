@@ -1,12 +1,18 @@
 import {Routes} from '@angular/router';
-import {TestFlexComponent} from "./test-flex/test-flex.component";
-
+import {FlexTestComponent} from "./flex-test/flex-test.component";
+import {FlexDebugComponent} from "./flex-debug/flex-debug.component";
 
 
 export default [
     {
-        path     : 'test-flex',
-        component: TestFlexComponent,
-        data: {title: 'Test Flex'}
+        path     : 'flex-test',
+        component: FlexTestComponent,
+        data: {title: 'Flex Test'}
+    },
+    {
+        path     : 'flex-debug',
+        component: FlexDebugComponent,
+        data: {title: 'Flex Debug'}
     }
 ] as Routes;
+

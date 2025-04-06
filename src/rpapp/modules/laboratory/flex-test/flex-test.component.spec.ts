@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestFlexComponent } from './test-flex.component';
+import { FlexTestComponent } from './flex-test.component';
 
-describe('TestFlexComponent', () => {
-  let component: TestFlexComponent;
-  let fixture: ComponentFixture<TestFlexComponent>;
+describe('FlexTestComponent', () => {
+  let component: FlexTestComponent;
+  let fixture: ComponentFixture<FlexTestComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestFlexComponent]
+      imports: [FlexTestComponent]
     });
-    fixture = TestBed.createComponent(TestFlexComponent);
+    fixture = TestBed.createComponent(FlexTestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -212,11 +212,18 @@ export const defaultNavigation: FuseNavigationItem[] = [
         icon : 'heroicons_outline:beaker',
         children: [
             {
-                id   : 'test-flex',
-                title: 'Test Flex',
+                id   : 'flex-test',
+                title: 'Flex Test',
                 type : 'basic',
                 icon : 'heroicons_outline:cog',
-                link : '/laboratory/test-flex'
+                link : '/laboratory/flex-test'
+            },
+            {
+                id   : 'flex-debug',
+                title: 'Flex Debug',
+                type : 'basic',
+                icon : 'heroicons_outline:cog',
+                link : '/laboratory/flex-debug'
             }
         ]
     },

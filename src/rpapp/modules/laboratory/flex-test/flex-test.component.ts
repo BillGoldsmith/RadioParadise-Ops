@@ -1,17 +1,16 @@
-import {Component, inject} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AccountService} from "../../../core/account/account.service";
 import {AccountModel} from "../../../core/account/account.model";
-import {Router} from "@angular/router";
+import {AccountService} from "../../../core/account/account.service";
 
 @Component({
-  selector: 'app-test-flex',
+  selector: 'app-flex-test',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './test-flex.component.html',
-  styleUrls: ['./test-flex.component.scss']
+  templateUrl: './flex-test.component.html',
+  styleUrls: ['./flex-test.component.scss']
 })
-export class TestFlexComponent {
+export class FlexTestComponent {
 
     account: AccountModel
 

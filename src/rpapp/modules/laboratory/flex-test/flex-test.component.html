@@ -21,13 +21,13 @@
 
     </p>
 
-    <a target="_blank" [href]="'https://test-flex.radioparadise.com/' + account.username + '/0'">Start flex stream (main mix)</a><br>
-    <a target="_blank" [href]="'https://test-flex.radioparadise.com/' + account.username + '/42'">Start flex stream (serenity)</a><br>
-    <a target="_blank" [href]="'https://test-flex.radioparadise.com/' + account.username + '/99'">Start flex stream (favorites)</a>
+    <a target="_blank" [href]="environment.FLEX + account.username + '/0'">Start flex stream (main mix)</a><br>
+    <a target="_blank" [href]="environment.FLEX + account.username + '/42'">Start flex stream (serenity)</a><br>
+    <a target="_blank" [href]="environment.FLEX + account.username + '/99'">Start flex stream (favorites)</a>
 
 
 
-    <p> Connection pattern is https://test-flex.radioparadise.com/  username / channel number</p>
+    <p> Connection pattern is {{ environment.FLEX  }} username / channel number</p>
 
 
 

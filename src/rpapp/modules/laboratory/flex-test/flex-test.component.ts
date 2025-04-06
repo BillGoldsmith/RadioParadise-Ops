@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AccountModel} from "../../../core/account/account.model";
 import {AccountService} from "../../../core/account/account.service";
+import {environment} from "../../../../zenvironments/environment";
 
 @Component({
   selector: 'app-flex-test',
@@ -28,4 +29,5 @@ export class FlexTestComponent {
 
     }
 
+    protected readonly environment = environment;
 }

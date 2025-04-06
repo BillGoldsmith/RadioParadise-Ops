@@ -29,21 +29,21 @@ export class FlexDebugComponent implements OnInit{
 
 
     clickRefreshNodeList(){
-        this.http.get( 'https://local-flex-api.radioparadise.com/admin/dump/node', {withCredentials:true }).subscribe( (data) =>{
+        this.http.get( environment.FLEX_API + 'admin/dump/node', {withCredentials:true }).subscribe( (data) =>{
             this.nodeList = JSON.stringify(data);
         })
     }
 
     clickRefreshLeafList(){
-        this.http.get( 'https://local-flex-api.radioparadise.com/admin/dump/leaf', {withCredentials:true }).subscribe( (data) =>{
-            this.leafList = data;
+        this.http.get( environment.FLEX_API + 'admin/dump/leaf', {withCredentials:true }).subscribe( (data) =>{
+            this.leafList = JSON.stringify(data);
         })
     }
 
 
     clickRefreshTreeList(){
-        this.http.get( 'https://local-flex-api.radioparadise.com/admin/dump/tree', {withCredentials:true }).subscribe( (data) =>{
-            this.treeList = data;
+        this.http.get( environment.FLEX_API + 'admin/dump/tree', {withCredentials:true }).subscribe( (data) =>{
+            this.treeList = JSON.stringify(data);
         })
     }
 

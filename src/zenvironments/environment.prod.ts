@@ -35,6 +35,11 @@ export const environment = {
 
   BRAINZ_API: (partials.BRAINZ_SERVER + 'ws/2/'),
   BRAINZ_INDEXED_API: (partials.BRAINZ_SERVER + 'ws/2/'),
-  BRAINZ_BROWSE: partials.BRAINZ_SERVER
+  BRAINZ_BROWSE: partials.BRAINZ_SERVER,
+
+
+    FLEX_API: 'https://test-flex-api.radioparadise.com/',
+    FLEX: 'https://test-flex.radioparadise.com/'
+
 };
 

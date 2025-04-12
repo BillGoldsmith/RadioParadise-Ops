@@ -31,8 +31,6 @@ const partials = {
     //CACHE_API_SERVER: 'https://api.radioparadise.com/api/',
 
 
-    FLEX_API: 'https://local-flex-api.radioparadise.com/',
-    FLEX: 'https://test-flex.radioparadise.com/'
 
 };
 
@@ -67,6 +65,7 @@ export const environment = {
     BRAINZ_BROWSE: partials.BRAINZ_SERVER,
 
 
+    FLEX_RELAY: 'https://local-flex-relay.radioparadise.com/',
     FLEX_API: 'https://local-flex-api.radioparadise.com/',
     FLEX: 'https://local-flex.radioparadise.com/'
 

@@ -91,5 +91,10 @@ export class AccountService {
         window.location.reload();
         //this._cookieService.delete("C_user_id","/",".radioparadsie.com",false,"None");
     }
+
+    getAuthToken(){
+        return this._cookieService.get('C_passwd');
+    }
+
 }
 

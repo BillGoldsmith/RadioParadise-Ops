@@ -1,8 +1,8 @@
-<div class="prose">
+<div class="prose" xmlns="http://www.w3.org/1999/html">
 
     <p>
         This is a showcase of flex player features.
-        Currently requires clients that support redirect.  Most do,  but that will be phased out.
+        Currently requires clients that support redirect. Most do, but that will be phased out.
     </p>
 
     <p>
@@ -14,21 +14,49 @@
 
         In the backend this creates an anonymous client with it's own listener history.
         The playlist is based off the provided username so will use their favorites.
-        This also creates an association to that username.  Such that an authenticated user can maninpulate the experience.
+        This also creates an association to that username. Such that an authenticated user can maninpulate the
+        experience.
 
-        /username/chan  would connect to a channel specific stream and can just be stopped or skipped
-        /username   would connect to the default stream which can change channels.
+        /username/chan would connect to a channel specific stream and can just be stopped or skipped
+        /username would connect to the default stream which can change channels.
 
     </p>
-
+    <a target="_blank" [href]="environment.FLEX + account.username">Start flex stream </a><br>
     <a target="_blank" [href]="environment.FLEX + account.username + '/0'">Start flex stream (main mix)</a><br>
     <a target="_blank" [href]="environment.FLEX + account.username + '/42'">Start flex stream (serenity)</a><br>
     <a target="_blank" [href]="environment.FLEX + account.username + '/99'">Start flex stream (favorites)</a>
 
 
+    <p> Connection pattern is {{ environment.FLEX }} username / channel number</p>
 
-    <p> Connection pattern is {{ environment.FLEX  }} username / channel number</p>
+    <hr>
 
+    <p>
+        HLS Player ( allows inline metadata, but very slow start on RocketStream )
+    </p>
 
+    <div>
+        <button [disabled]="startHLSDisabled" (click)="clickStartPlayerHls()"  class="m-2" mat-raised-button color="primary" >start HLS player</button>
+    </div>
+    <div>{{hls_metadata}}</div>
+    <div>
+        <audio preload="true" id="player_hls" controls crossorigin></audio>
+    </div>
+
+    <hr>
+
+    <p>
+        Stream Player
+    </p>
+
+    <div>
+        <button (click)="clickStartPlayerStream()"  class="m-2" mat-raised-button color="primary" >start Stream player</button>
+    </div>
+
+    <div>
+        <audio preload="true" id="player_stream" controls crossorigin></audio>
+    </div>
+
+    <hr>
 
 </div>

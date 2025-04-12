@@ -3,21 +3,21 @@
     <div>
     <button class="m-2" mat-raised-button color="primary" (click)="clickRefreshNodeList()">refresh node list</button>
         <ng-container *ngIf="nodeList">
-          <andypf-json-viewer data={{nodeList}}></andypf-json-viewer>
+          <andypf-json-viewer  expanded="true" data={{nodeList}}></andypf-json-viewer>
         </ng-container>
     </div>
 
     <div>
     <button class="m-2" mat-raised-button color="primary"  (click)="clickRefreshLeafList()">refresh leaf list</button>
         <ng-container *ngIf="leafList">
-            <andypf-json-viewer data={{leafList}}></andypf-json-viewer>
+            <andypf-json-viewer  expanded="true" data={{leafList}}></andypf-json-viewer>
         </ng-container>
     </div>
 
     <div>
     <button class="m-2" mat-raised-button color="primary"  (click)="clickRefreshTreeList()">refresh tree list</button>
         <ng-container *ngIf="treeList">
-            <andypf-json-viewer data={{treeList}}></andypf-json-viewer>
+            <andypf-json-viewer  expanded="true" data={{treeList}}></andypf-json-viewer>
         </ng-container>
     </div>
 

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {AccountModel} from "../../../core/account/account.model";
 import {AccountService} from "../../../core/account/account.service";
 import {environment} from "../../../../zenvironments/environment";
@@ -7,11 +7,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {HttpClient} from "@angular/common/http";
 import {UUID} from "angular2-uuid";
 import {firstValueFrom} from "rxjs";
+import {FlexUtilsService} from "../../../services/flex-utils.service";
+import {MatSelectModule} from "@angular/material/select";
 
 @Component({
   selector: 'app-flex-test',
   standalone: true,
-    imports: [CommonModule, MatButtonModule],
+    imports: [CommonModule, MatButtonModule, MatSelectModule],
   templateUrl: './flex-test.component.html',
   styleUrls: ['./flex-test.component.scss']
 })
@@ -22,13 +24,15 @@ export class FlexTestComponent {
 
     hls_metadata = ''
     startHLSDisabled = false
+    clientState: any = false
 
     /**
      * Constructor
      */
     constructor(
         private http: HttpClient,
-        private accountService: AccountService
+        private accountService: AccountService,
+        private flexUtilsService: FlexUtilsService
     )
     {
 
@@ -43,19 +47,24 @@ export class FlexTestComponent {
 
     async clickStartPlayerHls(){
         this.startHLSDisabled = true;
-        const connection = {
-            treeUsername: this.account.username,
-            leafUserId: this.account.user_id,
-            leafAuthToken: this.accountService.getAuthToken(),
-            leafSource: 24,
-            leafPlayerId: UUID.UUID(),
-            leafBranchType: 'default',
-            leafBranchChannelId: 0
+
+        const body = {
+            clientCredentials: this.flexUtilsService.getCredentials(),
+            playerAction:{
+                action: 'startStream',
+                options: {
+                    treeUsername: this.account.username,
+                    leafPlayerId: UUID.UUID(),
+                    leafBranchType: 'default',
+                    leafBranchChannelId: 0
+                }
+            }
         }
+
 
         let streamUrl = ''
         try {
-            const response = await firstValueFrom(this.http.post(environment.FLEX_RELAY + 'client/connect', connection, {withCredentials: true}))
+            const response = await firstValueFrom(this.http.post(environment.FLEX_RELAY + 'client/connect', body, {withCredentials: false}))
             // @ts-ignore
             streamUrl = response.streamUrl
         }catch (e) {
@@ -88,23 +97,26 @@ export class FlexTestComponent {
             hls.loadSource(source);
             hls.attachMedia(audio);
             player.play()
-        }, 14000);
+        }, 20000);
 
     }
 
     clickStartPlayerStream(){
 
-        const connection = {
-            treeUsername: this.account.username,
-            leafUserId: this.account.user_id,
-            leafAuthToken: this.accountService.getAuthToken(),
-            leafSource: 24,
-            leafPlayerId: UUID.UUID(),
-            leafBranchType: 'default',
-            leafBranchChannelId: 0
+        const body = {
+            clientCredentials: this.flexUtilsService.getCredentials(),
+            playerAction:{
+                action: 'startStream',
+                options: {
+                    treeUsername: this.account.username,
+                    leafPlayerId: UUID.UUID(),
+                    leafBranchType: 'default',
+                    leafBranchChannelId: 42
+                }
+            }
         }
 
-        this.http.post( environment.FLEX_RELAY + 'client/connect', connection, { withCredentials:true }).subscribe( (data:any) =>{
+        this.http.post( environment.FLEX_RELAY + 'client/connect', body, { withCredentials:false }).subscribe( (data:any) =>{
 
             const source = data.streamUrl
             const audio: HTMLAudioElement = document.querySelector('#player_stream')
@@ -116,9 +128,73 @@ export class FlexTestComponent {
 
         })
 
+    }
 
+    clickRefreshClientState(){
+        const body = {
+            clientCredentials: this.flexUtilsService.getCredentials(),
+        }
 
+        this.http.post( environment.FLEX_RELAY + 'client/state', body, { withCredentials:false }).subscribe( (data:any) =>{
+            console.log ('clientState', data)
+            this.clientState = data;
+
+        })
 
     }
+
+
+    clickSkipSong(branch){
+        const body = {
+            clientCredentials: this.flexUtilsService.getCredentials(),
+            playerAction: {
+                action: 'skipSong',
+                options: {
+                    branchId: branch.branchId
+                }
+            }
+        }
+
+        this.http.post( environment.FLEX_RELAY + 'client/action', body, { withCredentials:false }).subscribe( (data:any) =>{
+            console.log ('command', data)
+        })
+
+    }
+
+    clickChangeChannel(event, branch){
+        const body = {
+            clientCredentials: this.flexUtilsService.getCredentials(),
+            playerAction: {
+                action: 'changeChannel',
+                options: {
+                    branchId: branch.branchId,
+                    channelId: event
+                }
+            }
+        }
+
+        this.http.post( environment.FLEX_RELAY + 'client/action', body, { withCredentials:false }).subscribe( (data:any) =>{
+            console.log ('command', data)
+        })
+    }
+
+    clickStopLeaf(leaf){
+
+        const body = {
+            clientCredentials: this.flexUtilsService.getCredentials(),
+            playerAction: {
+                action: 'stopLeaf',
+                options: {
+                    leafId: leaf.leafId
+                }
+            }
+        }
+
+        this.http.post( environment.FLEX_RELAY + 'client/action', body, { withCredentials:false }).subscribe( (data:any) =>{
+            console.log ('command', data)
+        })
+
+    }
+
 
 }

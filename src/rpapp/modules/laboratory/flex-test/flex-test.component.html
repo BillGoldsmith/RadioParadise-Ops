@@ -36,9 +36,11 @@
     </p>
 
     <div>
-        <button [disabled]="startHLSDisabled" (click)="clickStartPlayerHls()"  class="m-2" mat-raised-button color="primary" >start HLS player</button>
+        <button [disabled]="startHLSDisabled" (click)="clickStartPlayerHls()" class="m-2" mat-raised-button
+                color="primary">start HLS player
+        </button>
     </div>
-    <div>{{hls_metadata}}</div>
+    <div>{{ hls_metadata }}</div>
     <div>
         <audio preload="true" id="player_hls" controls crossorigin></audio>
     </div>
@@ -50,7 +52,8 @@
     </p>
 
     <div>
-        <button (click)="clickStartPlayerStream()"  class="m-2" mat-raised-button color="primary" >start Stream player</button>
+        <button (click)="clickStartPlayerStream()" class="m-2" mat-raised-button color="primary">start Stream player
+        </button>
     </div>
 
     <div>
@@ -58,5 +61,57 @@
     </div>
 
     <hr>
+
+    <p>
+        Client State
+    </p>
+
+    <div>
+        <button (click)="clickRefreshClientState()" class="m-2" mat-raised-button color="primary">REFRESH</button>
+    </div>
+    <ng-container *ngIf="clientState">
+        <div *ngFor="let branch of clientState.arrBranch">
+
+            <h4>{{ branch.branchName }}</h4>
+            <ul class="list-none">
+                <li>flex stream type: {{ branch.branchType }}</li>
+                <li>channel: {{ branch.command.currentTrack.channel.title }}</li>
+                <li>song: {{ branch.command.currentTrack.title }}</li>
+                <li>album: {{ branch.command.currentTrack.album }}</li>
+                <li>artist: {{ branch.command.currentTrack.artist }}</li>
+            </ul>
+
+            <div class="ml-8">
+                <button (click)="clickSkipSong(branch)" class="m-2" mat-raised-button color="primary">SKIP</button>
+
+                <ng-container *ngIf="branch.branchType == 'default'">
+                <mat-form-field>
+                    <mat-label>change channel</mat-label>
+                    <mat-select (valueChange)="clickChangeChannel($event, branch)"
+                               >
+                        <mat-option value="0">Main Mix</mat-option>
+                        <mat-option value="1">Mellow Mix</mat-option>
+                        <mat-option value="2">Rock Mix</mat-option>
+                        <mat-option value="3">Global Mix</mat-option>
+                        <mat-option value="42">Serenity</mat-option>
+                        <mat-option value="2050">Radio 2050</mat-option>
+                        <mat-option value="99">My Mix</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </ng-container>
+
+                <h4>Listeners</h4>
+                <ul class="list-none">
+                    <ng-container *ngFor="let leaf of branch.arrLeaf ">
+                        <li>{{ leaf.leafAccount.username }}
+                            <button (click)="clickStopLeaf(leaf)" class="m-2" mat-raised-button color="primary">STOP
+                            </button>
+                        </li>
+                    </ng-container>
+                </ul>
+
+            </div>
+        </div>
+    </ng-container>
 
 </div>

@@ -50,22 +50,6 @@ export class ServersBandwidthComponent {
             mrtg_namespace: 'localhost_enp9s0f1np1',
         },
         {
-            subdomain: 'server-8',
-            tags: ['web', 'stream', 'portainer'],
-            links: [],
-            datacenter: 'DLS',
-            bandwidth: '150TB',
-            mrtg_namespace: 'localhost_enp2s0',
-        },
-        {
-            subdomain: 'server-9',
-            tags: ['web', 'stream', 'misc'],
-            links: [],
-            datacenter: 'DLS',
-            bandwidth: '150TB',
-            mrtg_namespace: 'localhost_enp2s0',
-        },
-        {
             subdomain: 'server-10',
             tags: ['web', 'stream', 'audio-edge'],
             links: [],
@@ -79,14 +63,6 @@ export class ServersBandwidthComponent {
             links: [],
             datacenter: 'EU',
             bandwidth: '2Gb/s',
-            mrtg_namespace: 'localhost_enp1s0f0',
-        },
-        {
-            subdomain: 'server-13',
-            tags: ['web', 'stream', 'audio-edge'],
-            links: [],
-            datacenter: 'SEA',
-            bandwidth: '500Mb/s',
             mrtg_namespace: 'localhost_enp1s0f0',
         },
         {

@@ -16,6 +16,7 @@ export class ChannelStreamsComponent implements OnInit{
 
     pageData:any = false
 
+    mountData: any = false
 
 
     constructor(private http: HttpClient) {}
@@ -27,11 +28,13 @@ export class ChannelStreamsComponent implements OnInit{
     loadData(){
 
         this.http.get( environment.RPSERVER_OPI + 'status/streams', {withCredentials:true }).subscribe( (data) =>{
-
-            console.log('loaddata', data);
-
-
+            //console.log('loaddata', data);
             this.pageData = data;
+        })
+
+        this.http.get( environment.RPSERVER_OPI + 'status/service/stream-mounts', {withCredentials:true }).subscribe( (data) =>{
+            //console.log('loaddata', data);
+            this.mountData = data;
         })
 
     }
@@ -64,6 +67,19 @@ export class ChannelStreamsComponent implements OnInit{
     }
 
 
+    clickStop(serverId,encoder) {
 
+        let url = 'https://' + serverId + '.radioparadise.com:7006/stop/' + encoder.encoderName;
+        this.http.get( url, {withCredentials:true }).subscribe( (data) =>{
+            console.log('sync', url, data);
+        })
+
+    }
+
+    toggleMounts(serverName, encoderName){
+        if (this.mountData) {
+            this.mountData.servers[serverName].encoders[encoderName].show = !this.mountData.servers[serverName].encoders[encoderName].show
+        }
+    }
 
 }

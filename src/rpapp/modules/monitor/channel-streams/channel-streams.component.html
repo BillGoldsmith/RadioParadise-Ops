@@ -1,8 +1,8 @@
 <div class="prose" *ngIf="pageData">
 
     <p>
-        Temp testing notes:  Skip is just for testing.  Currently only server-21 is running the new build and responds to commands.
         Syncing usually needs to be done on the half hour before the master drifts from the active playlist sched time.
+        But you can check channel status for the current delta.
     </p>
 
     <p>
@@ -13,11 +13,20 @@
 
     <p>
         Restart will kick people off the channel, and is for when a config change is made or starting a new channel.
+        Restart may create zombies and is experimental.
     </p>
+    <ng-container *ngIf="mountData">
+        <h2>Global Status: <span class="ml-2"  [ngClass]="{'text-green-700': mountData.global_status == '200', 'text-red-600': mountData.global_status != '200'}">{{mountData.global_status}}</span></h2>
+    </ng-container>
+
 
     <ng-container *ngFor="let server of pageData">
-        <h2><a target="rp_stream_server"
-               [href]="'https://' + server.serverId + '.radioparadise.com/status'">{{ server.serverId }}</a></h2>
+        <h3><a target="rp_stream_server"
+               [href]="'https://' + server.serverId + '.radioparadise.com/status'">{{ server.serverId }}:</a>
+            <ng-container *ngIf="mountData">
+                <span class="ml-2"  [ngClass]="{'text-green-700': mountData.servers[server.serverId].status_code == '200', 'text-red-600': mountData.servers[server.serverId].status_code != '200' }"  >{{mountData.servers[server.serverId].status_code}}</span>
+            </ng-container>
+        </h3>
 
 
         <div class="ml-6">
@@ -27,17 +36,33 @@
                     <th class="p-1 pl-2">event</th>
                     <th class="p-1 pl-2">time</th>
                     <th></th>
+                    <th class="p-1 pl-2">status</th>
                 </tr>
-                <tr *ngFor="let encoder of server.encoders">
-                    <td class="p-1">{{encoder.encoderName}}<ng-container *ngIf="encoder.status.master"> ***</ng-container></td>
+                <ng-container *ngFor="let encoder of server.encoders">
+                <tr>
+                    <td class="p-1 cursor-pointer" (click)="toggleMounts(server.serverId, encoder.encoderName)">{{encoder.encoderName}}<ng-container *ngIf="encoder.status.master"> ***</ng-container></td>
                     <td class="p-1 pl-2">{{encoder.status.delta_event}}</td>
                     <td class="p-1 pl-2">{{encoder.status.delta_play_time}}</td>
                     <td class="p-1">
                         <a class="pl-1 cursor-pointer" (click)="clickSync(server.serverId, encoder)" >Sync</a>
                         <a class="pl-3 cursor-pointer" (click)="clickRestart(server.serverId, encoder)" >Restart</a>
-                        <a class="pl-3 cursor-pointer" (click)="clickSkip(server.serverId, encoder)" >Skip</a>
+                        <a class="pl-3 cursor-pointer" (click)="clickStop(server.serverId, encoder)" >Stop</a>
                     </td>
+                    <td>
+                        <ng-container *ngIf="mountData">
+                            <span class=""  [ngClass]="{'text-green-700': mountData.servers[server.serverId].encoders[encoder.encoderName].status_code == '200', 'text-red-600': mountData.servers[server.serverId].encoders[encoder.encoderName].status_code != '200'}" > {{ mountData.servers[server.serverId].encoders[encoder.encoderName].status_code }}</span>
+                        </ng-container>
+                    </td>
+
                 </tr>
+
+                <ng-container *ngIf="mountData && mountData.servers[server.serverId].encoders[encoder.encoderName].show">
+                <tr *ngFor="let test of mountData.servers[server.serverId].encoders[encoder.encoderName].tests">
+                    <td class="pl-6 " colspan="5"><a target="_rpaudio" [href]="test.stremUrl">{{test.streamUrl}} <span class=""  [ngClass]="{'text-green-700': test.code == '200', 'text-red-600':  test.code != '200'}">{{test.code}}</span></a></td>
+                </tr>
+                </ng-container>
+                </ng-container>
+
             </table>
         </div>
 

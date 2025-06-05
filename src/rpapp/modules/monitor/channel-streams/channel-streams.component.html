@@ -58,7 +58,7 @@
 
                 <ng-container *ngIf="mountData && mountData.servers[server.serverId].encoders[encoder.encoderName].show">
                 <tr *ngFor="let test of mountData.servers[server.serverId].encoders[encoder.encoderName].tests">
-                    <td class="pl-6 " colspan="5"><a target="_rpaudio" [href]="test.stremUrl">{{test.streamUrl}} <span class=""  [ngClass]="{'text-green-700': test.code == '200', 'text-red-600':  test.code != '200'}">{{test.code}}</span></a></td>
+                    <td class="pl-6 " colspan="5"><a target="_rpaudio" [href]="test.streamUrl">{{test.streamUrl}} <span class=""  [ngClass]="{'text-green-700': test.code == '200', 'text-red-600':  test.code != '200'}">{{test.code}}</span></a></td>
                 </tr>
                 </ng-container>
                 </ng-container>

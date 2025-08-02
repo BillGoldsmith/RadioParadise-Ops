@@ -47,7 +47,7 @@ export class ServersBandwidthComponent {
             links: [],
             datacenter: 'SLC',
             bandwidth: '660TB/m',
-            mrtg_namespace: 'localhost_enp10s0f0np0',
+            mrtg_namespace: 'localhost_enp1s0',
         },
         {
             subdomain: 'server-6',

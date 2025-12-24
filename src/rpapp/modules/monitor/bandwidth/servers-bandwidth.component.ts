@@ -19,7 +19,7 @@ export class ServersBandwidthComponent {
 
         {
             subdomain: 'audio-0',
-            tags: ['stream-fm', 'build-audio manage-mqa', 'audio'],
+            tags: ['stream-fm', 'build-audio', 'audio'],
             links: [],
             datacenter: 'DLS',
             bandwidth: '150TB',
@@ -42,12 +42,12 @@ export class ServersBandwidthComponent {
             mrtg_namespace: 'localhost_eno1',
         },
         {
-            subdomain: 'audio-4',
+            subdomain: 'audio-5',
             tags: ['stream', 'build-audio', 'audio', 'dj-tools'],
             links: [],
             datacenter: 'SLC',
             bandwidth: '660TB/m',
-            mrtg_namespace: 'localhost_enp1s0',
+            mrtg_namespace: 'localhost_enp10s0f1np1',
         },
         {
             subdomain: 'server-6',

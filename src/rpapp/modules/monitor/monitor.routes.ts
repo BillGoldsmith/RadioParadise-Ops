@@ -7,6 +7,7 @@ import {ServiceHealthComponent} from "./service-health/service-health.component"
 import {ChannelStatusComponent} from "./channel-status/channel-status.component";
 import {ChannelStreamsComponent} from "./channel-streams/channel-streams.component";
 import {ChannelFilesComponent} from "./channel-files/channel-files.component";
+import {ChannelDeltaComponent} from "./channel-delta/channel-delta.component";
 
 export default [
     {
@@ -43,6 +44,11 @@ export default [
         path     : 'channel/streams',
         component: ChannelStreamsComponent,
         data: {title: 'Channel Streams'}
+    },
+    {
+        path     : 'channel/deltas',
+        component: ChannelDeltaComponent,
+        data: {title: 'Channel Deltas'}
     },
     {
         path     : 'channel/files',

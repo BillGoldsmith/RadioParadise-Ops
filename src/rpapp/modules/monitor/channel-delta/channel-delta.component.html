@@ -1,0 +1,59 @@
+<div class="prose" *ngIf="chans">
+
+    <p>
+        Shows any channel blocks where metadata duration doesn't match file length.
+    </p>
+
+
+    <ng-container *ngFor="let channel of chans">
+        <h3>
+            <button class="mr-2" [disabled]="channel.busy" mat-raised-button color="accent"
+                    (click)="loacChan(channel,'dj-tools-1')">{{ channel.chan }} dj-1
+            </button>
+            <button [disabled]="channel.busy" mat-raised-button color="accent"
+                    (click)="loacChan(channel, 'dj-tools-5')">{{ channel.chan }} dj-5
+            </button>
+        </h3>
+
+        <ng-container *ngIf="channel.blocks">
+
+
+                <ng-container *ngFor="let row of channel.blocks">
+
+                    <hr>
+                    <div class="">
+
+                        <a class="cursor-pointer" (click)="row.showjson = !row.showjson">Block {{ row.block }}</a>
+                        <pre class="ml-4" *ngIf="row.showjson" [innerHTML]=" row.json | json "></pre>
+
+
+                        <br>
+                        block file: <a [href]="row.block_file_data.url" target="_rpblock">{{ row.block }}-0.flac</a><br>
+                        elapsed_duration_mismatch: {{row.bad_elapsed_value_detected}}<br>
+                        json length: {{ row.block_file_data.json_length }} <br>
+                        file length:  {{ row.block_file_data.file_length }}<br>
+                        delta:  {{ row.block_file_data.delta }}<br><br>
+
+
+                        block vs gapless delta: {{ row.block_gapless_delta }}<br>
+                        gapless length: {{ row.gapless_total }}<br><br>
+
+
+                            <div class="ml-8" *ngFor="let gapless of row.gapless_file_data; index as i">
+                                delta: {{ gapless.delta }}  <a [href]="gapless.url"
+                                                               target="_rpgapless">{{ row.block + '-' + i }}.flac</a>
+                                json: {{ gapless.json_length }}  file: {{ gapless.file_length }}
+                                <br>
+                            </div>
+
+                    </div>
+                </ng-container>
+
+
+        </ng-container>
+
+
+    </ng-container>
+
+
+</div>

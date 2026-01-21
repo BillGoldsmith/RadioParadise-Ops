@@ -57,6 +57,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         link : '/monitor/channel/streams'
                     },
                     {
+                        id   : 'channel-deltas',
+                        title: 'Channel Deltas',
+                        type : 'basic',
+                        link : '/monitor/channel/deltas'
+                    },
+                    {
                         id   : 'channel-files',
                         title: 'Channel Files',
                         type : 'basic',

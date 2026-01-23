@@ -17,11 +17,18 @@
 
         <ng-container *ngIf="channel.blocks">
 
+                <div>Flagged Blocks: {{channel.blocks.length}}</div>
 
                 <ng-container *ngFor="let row of channel.blocks">
 
                     <hr>
-                    <div class="">
+
+                    <div class=""  *ngIf="row.gapless_total == 0">
+                        No gapless files found for block {{ row.block }}
+                    </div>
+
+                    <div class=""  *ngIf="row.gapless_total != 0">
+
 
                         <a class="cursor-pointer" (click)="row.showjson = !row.showjson">Block {{ row.block }}</a>
                         <pre class="ml-4" *ngIf="row.showjson" [innerHTML]=" row.json | json "></pre>

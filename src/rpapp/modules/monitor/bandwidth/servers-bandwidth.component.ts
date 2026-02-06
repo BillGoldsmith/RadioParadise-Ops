@@ -51,11 +51,19 @@ export class ServersBandwidthComponent {
         },
         {
             subdomain: 'server-6',
-            tags: ['web', 'stream', 'shoutcast', 'audio'],
+            tags: ['web', 'stream', 'audio', 'strapi'],
             links: [],
             datacenter: 'SLC',
             bandwidth: '660TB/m',
             mrtg_namespace: 'localhost_enp9s0f1np1',
+        },
+        {
+            subdomain: 'server-7',
+            tags: ['web', 'stream', 'audio', 'strapi'],
+            links: [],
+            datacenter: 'SLC',
+            bandwidth: '660TB/m',
+            mrtg_namespace: 'localhost_enp10s0f1np1',
         },
         {
             subdomain: 'server-10',

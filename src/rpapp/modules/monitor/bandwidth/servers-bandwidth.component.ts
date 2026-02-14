@@ -34,14 +34,6 @@ export class ServersBandwidthComponent {
             mrtg_namespace: 'localhost_eno1',
         },
         {
-            subdomain: 'audio-3',
-            tags: ['stream', 'build-audio', 'audio', 'strapi'],
-            links: [],
-            datacenter: 'DLS',
-            bandwidth: '150TB',
-            mrtg_namespace: 'localhost_eno1',
-        },
-        {
             subdomain: 'audio-5',
             tags: ['stream', 'build-audio', 'audio', 'dj-tools'],
             links: [],
@@ -96,14 +88,6 @@ export class ServersBandwidthComponent {
             datacenter: 'SLC',
             bandwidth: '1Gb/s',
             mrtg_namespace: 'localhost_eno4',
-        },
-        {
-            subdomain: 'server-21',
-            tags: ['staging'],
-            links: [],
-            datacenter: 'SLC',
-            bandwidth: '10Gb/s 330TB/M',
-            mrtg_namespace: 'localhost_enp130s0',
         },
         {
             subdomain: 'legacy',

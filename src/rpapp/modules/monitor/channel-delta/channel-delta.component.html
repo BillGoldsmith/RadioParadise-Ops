@@ -19,6 +19,12 @@
 
                 <div>Flagged Blocks: {{channel.blocks.length}}</div>
 
+               <div>
+               <ng-container *ngFor="let row of channel.blocks; first as isFirst; last as isLast">
+                   <ng-container *ngIf="isFirst">(</ng-container>{{row.block}}<ng-container *ngIf="!isLast">,</ng-container><ng-container *ngIf="isLast">)</ng-container>
+               </ng-container>
+               </div>
+
                 <ng-container *ngFor="let row of channel.blocks">
 
                     <hr>

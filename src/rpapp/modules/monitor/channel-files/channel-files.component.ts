@@ -25,7 +25,7 @@ export class ChannelFilesComponent implements OnInit{
 
     loadData(){
 
-        this.http.get( 'https://dj-tools-1.radioparadise.com/channel_file_check.php', {withCredentials:true }).subscribe( (data) =>{
+        this.http.get( 'https://dj-tools-5.radioparadise.com/channel_file_check.php', {withCredentials:true }).subscribe( (data) =>{
             console.log('loaddata', data);
             this.pageData = data;
         })

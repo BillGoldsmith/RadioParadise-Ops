@@ -42,14 +42,6 @@ export class ServersBandwidthComponent {
             mrtg_namespace: 'localhost_enp10s0f1np1',
         },
         {
-            subdomain: 'server-6',
-            tags: ['web', 'stream', 'audio', 'strapi'],
-            links: [],
-            datacenter: 'SLC',
-            bandwidth: '660TB/m',
-            mrtg_namespace: 'localhost_enp9s0f1np1',
-        },
-        {
             subdomain: 'server-7',
             tags: ['web', 'stream', 'audio', 'strapi'],
             links: [],
@@ -88,6 +80,14 @@ export class ServersBandwidthComponent {
             datacenter: 'SLC',
             bandwidth: '1Gb/s',
             mrtg_namespace: 'localhost_eno4',
+        },
+        {
+            subdomain: 'server-30',
+            tags: ['EDGE'],
+            links: [],
+            datacenter: 'DAL-2',
+            bandwidth: '1PB@50Gb/s',
+            mrtg_namespace: 'localhost_bond0',
         },
         {
             subdomain: 'legacy',

@@ -43,9 +43,10 @@ export class ChannelDeltaComponent implements OnInit {
 
     loacChan(channel, server){
         channel.busy = true;
-        this.http.get( "https://"+server+".radioparadise.com/channel_timing_check.php?chan=" + channel.chan, {withCredentials:true, responseType: 'json' }).subscribe( (data) =>{
+        this.http.get( "https://"+server+".radioparadise.com/channel_timing_check.php?chan=" + channel.chan, {withCredentials:true, responseType: 'json' }).subscribe( (data: any) =>{
             //console.log(data);
-            channel.blocks = data;
+            channel.blocks = data.bsdChan;
+            channel.promos = data.promoDeltas;
             channel.busy = false;
         })
 

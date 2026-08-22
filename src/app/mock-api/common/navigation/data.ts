@@ -15,12 +15,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/monitor/bandwidth'
             },
             {
-                id   : 'stream-sync-status',
-                title: 'Stream Sync',
-                type : 'basic',
-                link : '/monitor/stream-sync-status'
-            },
-            {
                 id   : 'server-health',
                 title: 'Server Health',
                 type : 'basic',
@@ -43,12 +37,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         title: 'Channel Build',
                         type : 'basic',
                         link : '/monitor/channel/build'
-                    },
-                    {
-                        id   : 'channel-status',
-                        title: 'Channel Status',
-                        type : 'basic',
-                        link : '/monitor/channel/status'
                     },
                     {
                         id   : 'channel-streams',

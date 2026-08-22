@@ -1,0 +1,8 @@
+add 127.0.0.1 localdev.radioparadise.com to /etc/hosts
+
+getcerts.sh  will download certificates for localdev.radioparadise.com
+
+launch devserver with certs on port 8000 to run locally without cors issues.
+
+ng serve --ssl --host localdev.radioparadise.com --port 8000 --ssl-cert localdev/localdev_ssl/localdev.radioparadise.com/cert.pem --ssl-key localdev/localdev_ssl/localdev.radioparadise.com/privkey.pem
+

@@ -87,7 +87,7 @@ const slideInLeft = trigger('slideInLeft',
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${FuseAnimationDurations.entering} ${FuseAnimationCurves.deceleration}`,
+                    timings: '225ms cubic-bezier(0.0, 0.0, 0.2, 1)',
                 },
             },
         ),

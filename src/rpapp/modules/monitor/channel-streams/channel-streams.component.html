@@ -1,20 +1,15 @@
 <div class="prose" *ngIf="pageData">
 
     <p>
-        Syncing usually needs to be done on the half hour before the master drifts from the active playlist sched time.
-        But you can check channel status for the current delta.
-    </p>
-
-    <p>
-        Time, is the delta between the encoder and the master encoder in seconds.  Should be close to zero.
+        Time, is the delta between the encoder and the playlist sched time.  Should be close to zero.
         Event is the number of events different, 0, 1 or 2 is fine when time is still in sync. 4 or higher may mean it has stopped or is having issues reaching api.
-        Time and event of 999 means no records available.  *** is for master encoders ( write to rp_history table )
+        Time and event of 999 means no records available, the stream type channels will be 999.
     </p>
 
     <p>
-        Restart will kick people off the channel, and is for when a config change is made or starting a new channel.
-        Restart may create zombies and is experimental.
+        Restart will kick people off the channel, try sync first, restart is for when a config change is made or starting a new channel or encoder has died.
     </p>
+
     <ng-container *ngIf="mountData">
         <h2>Global Status: <span class="ml-2"  [ngClass]="{'text-green-700': mountData.global_status == '200', 'text-red-600': mountData.global_status != '200'}">{{mountData.global_status}}</span></h2>
     </ng-container>

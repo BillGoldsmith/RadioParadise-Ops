@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../zenvironments/environment";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-channel-build',
   standalone: true,
-  imports: [CommonModule],
+    imports: [CommonModule, MatButtonModule],
   templateUrl: './channel-build.component.html',
   styleUrls: ['./channel-build.component.scss']
 })
@@ -65,5 +66,13 @@ export class ChannelBuildComponent {
             }
         }
     }
+
+
+    toggleChannel(channel){
+        if (this.pageData) {
+            channel.show = !channel.show
+        }
+    }
+
 
 }

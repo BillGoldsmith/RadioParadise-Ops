@@ -2,17 +2,17 @@
 
     <p>
         Shows any channel blocks or promos where metadata duration doesn't match file length. This report is slow as
-        getting actual file duration is expensive.
+        getting actual file duration is expensive.  So promos and blocks can be checked seperately.
     </p>
 
 
     <ng-container *ngFor="let channel of chans">
         <h3>
             <button class="mr-2" [disabled]="channel.busy" mat-raised-button color="accent"
-                    (click)="loacChan(channel,'dj-tools-1')">{{ channel.chan }} dj-1
+                    (click)="loacChan(channel,'dj-tools-5', 'check_promos')">{{ channel.chan }} promos
             </button>
             <button [disabled]="channel.busy" mat-raised-button color="accent"
-                    (click)="loacChan(channel, 'dj-tools-5')">{{ channel.chan }} dj-5
+                    (click)="loacChan(channel, 'dj-tools-5', 'check_blocks')">{{ channel.chan }} blocks
             </button>
         </h3>
 
@@ -66,13 +66,16 @@
                 </div>
             </ng-container>
 
+        </ng-container>
+
+        <ng-container *ngIf="channel.promos">
             <div>Flagged promos: {{ channel.promos.length }}</div>
             <ng-container *ngFor="let row of channel.promos">
                 <div class="mt-2">{{row}}</div>
             </ng-container>
-
-
         </ng-container>
+
+
 
 
     </ng-container>

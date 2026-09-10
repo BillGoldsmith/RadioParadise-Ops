@@ -1,0 +1,50 @@
+<div class="prose">
+
+    <p>
+        This uses liquidsoap_history table to find timing anomalies. Liquidsoap is like a client that plays 24/7 so can use it
+        log issues that may only show up during playtime.
+    </p>
+
+    <ng-container *ngIf="pageData">
+
+        <ng-container *ngFor="let channel of pageData.playlists;">
+            <h2>Channel: {{ channel.chan }}</h2>
+
+            <ng-container *ngIf="channel.chan != 99">
+                <div class="ml-6">
+                    <h4>current event id: {{ channel.current_event }}</h4>
+                    <h4>rp_history play_time: {{ channel.current_event_history_time }}</h4>
+                    <h4 [ngStyle]="{color: ( Math.abs(channel.current_event_history_time - channel.current_event_playlist_active_time)) > 2 ? 'yellow' : 'green'}">rp_history minus playlist_active time
+                        : {{ channel.current_event_history_time - channel.current_event_playlist_active_time | number:'1.3-3' }}</h4>
+                    <h4 [ngStyle]="{color: ( Math.abs(channel.current_event_history_time - channel.current_event_liquidsoap_stream_time)) > 2 ? 'yellow' : 'green'}">rp_history minus liquidsoap time
+                        : {{ channel.current_event_history_time - channel.current_event_liquidsoap_stream_time | number:'1.3-3'}}</h4>
+
+                    <ng-container *ngIf="channel.diff_array.length > 0">
+
+                        <p>List of any events where scheduled duration didn't match the duration of the file that was
+                            played. </p>
+                        <ng-container *ngFor="let event of channel.diff_array;">
+                            <div class="ml-6 mt-4" >
+                                <div><a target="a5"
+                                        href="{{'https://audio-5.radioparadise.com' + event.audio_url}}">{{ 'https://audio-5.radioparadise.com' + event.audio_url }}</a>
+                                </div>
+                                <div><a target="r2"
+                                        href="{{'https://audio.radioparadise.stream' + event.audio_url}}">{{ 'https://audio.radioparadise.stream' + event.audio_url }}</a>
+                                </div>
+                                <div>{{ 'diff: ' + event.duration_diff + ' | scheduled: ' + event.duration + ' | actual: ' + event.measured_duration + ' | event: ' + event.event }}</div>
+                            </div>
+                        </ng-container>
+
+                    </ng-container>
+
+
+                </div>
+            </ng-container>
+
+
+        </ng-container>
+
+    </ng-container>
+
+
+</div>

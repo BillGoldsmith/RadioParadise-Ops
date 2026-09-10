@@ -55,6 +55,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         title: 'Channel Files',
                         type : 'basic',
                         link : '/monitor/channel/files'
+                    },
+                    {
+                        id   : 'channel-playlist',
+                        title: 'Channel Playlist',
+                        type : 'basic',
+                        link : '/monitor/channel/playlist'
                     }
                 ]
             }

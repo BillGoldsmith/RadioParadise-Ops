@@ -1,0 +1,12 @@
+.section-start {
+    border-left: 1px solid var(--fuse-border);
+}
+
+td:last-child {
+    border-right: 1px solid var(--fuse-border);
+}
+
+td {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}

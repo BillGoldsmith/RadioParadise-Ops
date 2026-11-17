@@ -202,6 +202,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Sendy list',
                 type : 'basic',
                 link : '/reports/sendy-list'
+            },
+            {
+                id   : 'payments',
+                title: 'Payments',
+                type : 'basic',
+                link : '/reports/payments'
             }
         ]
     },

@@ -1,0 +1,67 @@
+<div class="prose max-w-none">
+
+    <div class="flex items-center gap-2">
+        <button mat-stroked-button (click)="changeMonth(-1)" [disabled]="loading">&lt;</button>
+
+        <mat-form-field class="w-40" subscriptSizing="dynamic">
+            <mat-label>Month</mat-label>
+            <mat-select [(value)]="month" (selectionChange)="loadData()">
+                <mat-option *ngFor="let m of months; let i = index" [value]="i + 1">{{m}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-28" subscriptSizing="dynamic">
+            <mat-label>Year</mat-label>
+            <mat-select [(value)]="year" (selectionChange)="loadData()">
+                <mat-option *ngFor="let y of years" [value]="y">{{y}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-stroked-button (click)="changeMonth(1)" [disabled]="loading">&gt;</button>
+    </div>
+
+    <p *ngIf="loading">Loading...</p>
+
+    <p *ngIf="!loading && isEmpty()">
+        No report available for {{months[month - 1]}} {{year}}.
+    </p>
+
+    <mat-tab-group *ngIf="!loading && !isEmpty()" [(selectedIndex)]="selectedTab" animationDuration="0ms">
+        <mat-tab *ngFor="let p of providers" [label]="p.label">
+            <div class="pt-4 overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let g of groups" [attr.colspan]="groupSpan(g)" class="text-center font-semibold section-start">{{g}}</td>
+                        </tr>
+                        <tr>
+                            <td>Day</td>
+                            <td *ngFor="let c of columns" class="text-right whitespace-pre-line align-bottom" [class.section-start]="groupStart(c)">{{c.label}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of pageData.days">
+                            <td class="whitespace-nowrap">{{d.day}}</td>
+                            <td *ngFor="let c of columns" class="text-right" [class.section-start]="groupStart(c)"
+                                [class.text-warn]="isAlert(c, value(d, p.id, c))">
+                                {{fmt(value(d, p.id, c))}}
+                            </td>
+                        </tr>
+                        <tr class="font-semibold">
+                            <td>Month</td>
+                            <td *ngFor="let c of columns" class="text-right" [class.section-start]="groupStart(c)"
+                                [class.text-warn]="isAlert(c, total(p.id, c))">
+                                {{fmt(total(p.id, c))}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-secondary text-sm">
+                    Month row sums payments, new and cancelled subscriptions; active subscriptions and anomaly counts show the latest day.
+                </p>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

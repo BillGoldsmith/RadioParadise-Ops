@@ -39,12 +39,14 @@ export class ReportsPaymentsComponent {
         {key: 'subscriptions.new',          label: 'New',           group: 'Subscriptions'},
         {key: 'subscriptions.cancellations',label: 'Cancelled',     group: 'Subscriptions'},
         {key: 'subscriptions.count',        label: 'Active',        group: 'Subscriptions', snapshot: true},
+        {key: 'subscriptions.suspended',    label: 'Suspended',     group: 'Subscriptions', snapshot: true},
         {key: 'orphan_payments',            label: 'Orphan\npayments',   group: 'Anomalies', snapshot: true},
         {key: 'phantom_payments',           label: 'Phantom\npayments',  group: 'Anomalies', snapshot: true},
         {key: 'orphan_subscriptions',       label: 'Orphan\nsubs',   group: 'Anomalies', snapshot: true},
         {key: 'phantom_subscriptions',      label: 'Phantom\nsubs',  group: 'Anomalies', snapshot: true},
         {key: 'double_subscriptions',       label: 'Double\nsubs',   group: 'Anomalies', snapshot: true},
         {key: 'bad_recurring_payments',     label: 'Mislabeled\nrecurring', group: 'Anomalies', snapshot: true},
+        {key: 'suspended_active_subscriptions', label: 'Suspended\nactive', group: 'Anomalies', snapshot: true},
     ];
 
     groups = ['Payments', 'Subscriptions', 'Anomalies'];

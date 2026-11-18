@@ -59,8 +59,13 @@
                 </table>
                 <p class="text-secondary text-sm">
                     Month row sums payments, new and cancelled subscriptions; active subscriptions and anomaly counts show the latest day.
-                    <br>Orphans exist in the payment gateway but not in the RP database. Phantoms exist in the RP database but not in the payment gateway.
                 </p>
+                <ul class="text-secondary text-sm">
+                    <li><b>Orphan</b>: active at the gateway, not active in our DB</li>
+                    <li><b>Double</b>: a user with more than one subscription active at the gateway</li>
+                    <li><b>Phantom</b>: active in our DB, but cancelled, expired or missing at the gateway</li>
+                    <li><b>Suspended active</b>: active in our DB, suspended at the gateway</li>
+                </ul>
             </div>
         </mat-tab>
     </mat-tab-group>

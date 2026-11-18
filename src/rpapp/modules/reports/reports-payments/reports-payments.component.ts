@@ -44,6 +44,7 @@ export class ReportsPaymentsComponent {
         {key: 'orphan_subscriptions',       label: 'Orphan\nsubs',   group: 'Anomalies', snapshot: true},
         {key: 'phantom_subscriptions',      label: 'Phantom\nsubs',  group: 'Anomalies', snapshot: true},
         {key: 'double_subscriptions',       label: 'Double\nsubs',   group: 'Anomalies', snapshot: true},
+        {key: 'bad_recurring_payments',     label: 'Mislabeled\nrecurring', group: 'Anomalies', snapshot: true},
     ];
 
     groups = ['Payments', 'Subscriptions', 'Anomalies'];
